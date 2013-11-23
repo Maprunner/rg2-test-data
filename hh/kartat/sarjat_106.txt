@@ -1,0 +1,8 @@
+1|Brown
+2|Blue
+3|Green
+4|Short Green
+5|Light Green
+6|Orange
+7|Yellow
+8|White

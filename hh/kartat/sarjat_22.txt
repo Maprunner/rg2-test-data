@@ -1,0 +1,6 @@
+1|Blue
+2|Brown
+3|Green
+4|Orange
+5|White
+6|Yellow

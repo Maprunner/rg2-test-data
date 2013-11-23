@@ -1,0 +1,4 @@
+1|orange
+2|yellow
+3|frolic
+4|frolic + extension

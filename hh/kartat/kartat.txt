@@ -1,0 +1,141 @@
+1|Whippendell Woods
+2|Northaw Great Wood
+3|Ashridge
+4|Nothaw Great Wood
+5|Phasels Wood
+6|Test - do not use
+7|Ashridge East
+8|Burnham Beeches
+9|Epping East
+10|Highfield Park
+11|Stanborough Park
+12|Rothamsted
+13|Epping East
+14|Whippendell Woods
+15|Sherrardspark Wood
+16|Northaw
+17|Nomansland Common
+18|Ashridge South
+19|Wormley
+20|Whippendell
+21|Sherrardspark Wood
+22|Rothamsted Park
+23|Verulamium Park
+24|Phasels Wood
+25|||||||||||||
+26|Burnham Beeches
+27|Tesdt: Do not use
+28|Cassiobury Park
+29|Mardley Heath
+30|Highfield Park
+31|Highfield Park
+32|Highfield Park Sprint
+33|Chorleywood
+34|Trafalgar Square
+35|Stanborough Park
+36|Ashridge
+37|Ashridge
+38|Rothamsted Park
+39|Verulamium
+40|Trent Park
+41|Broxbourne
+42|Burnham Beeches
+43|Northaw
+44|Highfield Park
+45|Highfield Park
+46|Highfield Park
+47|Highfield Park
+48|Highfield Park
+49|Highfield Park
+50|Jersey Farm
+51|Habs Boys
+52|Langley Wood
+53|St Albans
+54|Verulamium
+55|Stanborough
+56|Whippendell SQE
+57|Wormley Woods
+58|Ashridge
+59|Sherrardspark Wood
+60|Phasels Wood
+61|Boxmoor East
+62|St Albans
+63|St Albans
+64|Hatfield
+65|Ellenbrook Fields
+66|Mardley Heath
+67|Salisbury Village
+68|St Albans
+69|Highfield Park
+70|Sandridge
+71|Stanborough
+72|Verulamium
+73|Habs
+74|Trent Park
+75|Northaw Great Wood
+76|Ashridge
+77|Copyright|691|-0.30069771|97|51.748462|295|-0.30402902|1828|51.738616|1921|-0.28933051|914|51.774150
+78|Sherrardspark Wood
+79|Stanborough Park
+80|De Havilland Campus
+81|Ellenbrook Fields
+82|Ellenbrook Fields
+83|Hatfield OOM
+84|Batchwood
+85|Batchwood OOM
+86|Bernards Heath
+87|Mardley Heath
+88|London Colney
+89|Harpenden
+90|Harpenden
+91|Harpenden
+92|How Wood
+93|Highfield Park
+94|Greenwood Park
+95|Heartwood
+96|St Albans
+97|Jersey Farm
+98|Verulamium
+99|St Albans West
+100|
+101|Highfield Park
+102|Verulamium
+103|Gadebridge
+104|De Havilland Campus
+105|De Havilland Campus
+106|Ellenbrook Fields
+107|Northaw
+108|Gadebridge
+109|Heartwood
+110|Verulamium
+111|Verulamium
+112|Phasels Wood
+113|Phasels Wood
+114|Burnham Beeches
+115|Ashridge North
+116|Ashridge North
+117|Nomansland
+118|St Albans
+119|St Albans
+120|Fleetville and The Camp
+121|Chipperfield Common
+122|St Albans
+123|Handside
+124|Sherrards Park Wood
+125|Highfield Park
+126|Jersey Farm
+127|Jersey Farm
+128|Harpenden
+129|Rothamsted
+130|Habs
+131|Boxmoor and Gadebridge
+132|Verulamium
+133|Boxmoor
+134|Ellenbrrok
+135|Chiswell Green
+136|Greenwood Park
+137|Highfield Park
+138|Sherrardspark Wood
+139|Welwyn Village
+140|Verulamium
+141|Northaw

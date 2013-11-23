@@ -1,0 +1,4 @@
+1|orange
+2|red
+3|white
+4|yellow

@@ -1,0 +1,10 @@
+1|Blue Men
+2|Blue Women
+3|Brown
+4|Green Men
+5|Green Women
+6|Light Green
+7|Orange
+8|Short Green
+9|White
+10|Yellow

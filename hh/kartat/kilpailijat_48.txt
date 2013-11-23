@@ -1,0 +1,13 @@
+2|1||Alwyn C|0|_6_Alwyn C||42:59|2579
+3|1||Maire C|0|_13_Maire C||43:02|2582
+4|1||Rory P|0|_14_Rory P||43:04|2584
+5|1||Mike C|0|_1_Mike C||43:57|2637
+6|1||James E|0|_3_James E||44:26|2666
+7|1||Stu L|0|_5_Stu L||44:54|2694
+8|1||David S|0|_7_David S||45:25|2725
+9|1||Peter E|0|_2_Peter E||45:26|2726
+10|1||Paul H|0|_12_Paul H||45:28|2728
+11|1||Mike P|0|_11_Mike P||45:34|2734
+12|1||Mark A|0|_8_Mark A||45:44|2744
+13|1||Debbie H|0|_4_Debbie H||47:35|2855
+14|1||Kevin F|0|_9_Kevin F||53:00|3180

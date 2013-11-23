@@ -1,0 +1,8 @@
+1|KL
+2|BC
+3|BD
+4|AD
+5|AC
+6|JM
+7|KM
+8|JL
