@@ -1,1 +1,8 @@
-4|50110| GPS Simon Errington||Type you'r comment
+4|50078| GPS Simon Errington||Type your comment
+1|50006| GPS David Dixon||Type your comment
+4|81|John Williams||Type your comment
+1|11|Helen Errington||Type your comment
+1|5|Stu Levene||Type your comment
+1|2|David Frampton||Type your comment
+3|74|Peter Errington||Type your comment
+4|78|Simon Errington||First test of RG2 drawing
