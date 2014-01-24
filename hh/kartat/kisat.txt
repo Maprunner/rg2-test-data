@@ -133,4 +133,5 @@
 145|142|1|Stanborough Saturday League|2013-11-09|Happy Herts|L|
 146|144|2|Herts Winter ARC - St Albans|2013-11-19|Happy Herts|L|
 148|147|1|Rothamsted Saturday League|2013-12-07|Happy Herts|L|
-149|10|1|Test|2014-01-17|Happy Herts|T|
+149|153|1|Ashridge Ace of Herts 2014|2014-01-19|Happy Herts|R|
+150|154|2|Herts Winter ARC: London Colney|2014-01-21|Happy Herts|L|
