@@ -1,14 +1,4 @@
-2|50044| GPS Peter Errington||Type your comment
 1|6|David Saunders||Type your comment
 4|108|Mick Smith||Type your comment
-3|56|Freya Woolgrove||
-3|58|Oliver Jay||Type your comment
-3|58|Oliver Jay||Type your comment
-3|59|Jacob Starkey||Type your comment
-1|3|Neil Gostick||Type your comment
-2|100044| GPS Peter Errington*||New adjust
-1|50008| GPS Hedley Calderbank||Type your comment
-1|2|Richard Freeman||Type your comment
-3|50057| GPS Paul Sands||Type your comment
-1|50004| GPS James Lockwood||Type your comment
-1|50005| GPS Thomas M'Caw||Type your comment
+1|50033| GPS Simon Errington||Raw GPS with no adjustment. Actual time 20:11.
+3|56|Freya Woolgrove||Type your comment

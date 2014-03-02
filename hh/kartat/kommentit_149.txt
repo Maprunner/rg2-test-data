@@ -59,3 +59,5 @@
 6|50256| GPS Freya Askham||Type your comment
 3|72|Katie Blackford||Type your comment
 5|185|Richard Freeman||Type your comment
+5|50216| GPS Sarah Mansel||Type your comment
+3|100060| GPS Simon Errington*||New GPS adjustment test
