@@ -6,9 +6,13 @@
 *.jpg
 *.jar
 *.gif
+*.png
 test.txt
 basoc
 bko
+*.html
+*.css
+*.js
 #################
 ## Eclipse
 #################
