@@ -135,3 +135,10 @@
 148|147|1|Rothamsted Saturday League|2013-12-07|Happy Herts|L|
 149|153|1|Ashridge Ace of Herts 2014|2014-01-19|Happy Herts|R|
 150|154|2|Herts Winter ARC: London Colney|2014-01-21|Happy Herts|L|
+151|158|1|Nomansland Saturday League|2014-02-01|Happy Herts|L|
+152|159|1|Northaw Saturday League|2014-03-01|Happy Herts|L|
+153|161|3|Boxing Day Score: Trent Park|2013-12-26|HH|L|
+154|162|1|Chipperfield Saturday League|2014-04-05|HH|L|
+155|163|2|Herts Winter ARC: Hertford|2014-04-15|HH|L|
+156|164|1|SEOA Sprint Champs: Oaklands College|2014-04-26|HH|R|
+157|165|1|SEOA Middle Champs: Mardley Heath|2014-04-27|HH|R|
