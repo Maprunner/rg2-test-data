@@ -6,6 +6,7 @@
 *.jpg
 *.jar
 *.gif
+node_modules
 #################
 ## Eclipse
 #################

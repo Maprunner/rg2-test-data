@@ -1,0 +1,3028 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for js/draw.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("https://yui-s.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">js/draw.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">58.45% <small>(301 / 515)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">34.64% <small>(53 / 153)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">76.09% <small>(35 / 46)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">58.45% <small>(301 / 515)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">js\</a> &#187; draw.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+871
+872
+873
+874
+875
+876
+877
+878
+879
+880
+881
+882
+883
+884
+885
+886
+887
+888
+889
+890
+891
+892
+893
+894
+895
+896
+897
+898
+899
+900
+901
+902
+903</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">80</span>
+<span class="cline-any cline-yes">80</span>
+<span class="cline-any cline-yes">80</span>
+<span class="cline-any cline-yes">80</span>
+<span class="cline-any cline-yes">80</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">80</span>
+<span class="cline-any cline-yes">422</span>
+<span class="cline-any cline-yes">422</span>
+<span class="cline-any cline-yes">422</span>
+<span class="cline-any cline-yes">422</span>
+<span class="cline-any cline-yes">422</span>
+<span class="cline-any cline-yes">422</span>
+<span class="cline-any cline-yes">422</span>
+<span class="cline-any cline-yes">422</span>
+<span class="cline-any cline-yes">422</span>
+<span class="cline-any cline-yes">422</span>
+<span class="cline-any cline-yes">422</span>
+<span class="cline-any cline-yes">422</span>
+<span class="cline-any cline-yes">422</span>
+<span class="cline-any cline-yes">422</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">80</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">46</span>
+<span class="cline-any cline-yes">46</span>
+<span class="cline-any cline-yes">46</span>
+<span class="cline-any cline-yes">46</span>
+<span class="cline-any cline-yes">46</span>
+<span class="cline-any cline-yes">46</span>
+<span class="cline-any cline-yes">46</span>
+<span class="cline-any cline-yes">46</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">204</span>
+<span class="cline-any cline-yes">204</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34</span>
+<span class="cline-any cline-yes">34</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">14402</span>
+<span class="cline-any cline-yes">14402</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14402</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">74</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">74</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">18912</span>
+<span class="cline-any cline-yes">18912</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">148</span>
+<span class="cline-any cline-yes">148</span>
+<span class="cline-any cline-yes">148</span>
+<span class="cline-any cline-yes">148</span>
+<span class="cline-any cline-yes">148</span>
+<span class="cline-any cline-yes">148</span>
+<span class="cline-any cline-yes">148</span>
+<span class="cline-any cline-yes">148</span>
+<span class="cline-any cline-yes">148</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">148</span>
+<span class="cline-any cline-yes">60</span>
+<span class="cline-any cline-yes">60</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">57</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">60</span>
+<span class="cline-any cline-yes">60</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">60</span>
+<span class="cline-any cline-yes">60</span>
+<span class="cline-any cline-yes">60</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">148</span>
+<span class="cline-any cline-yes">62</span>
+<span class="cline-any cline-yes">62</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">62</span>
+<span class="cline-any cline-yes">62</span>
+<span class="cline-any cline-yes">56975</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">62</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">148</span>
+<span class="cline-any cline-yes">148</span>
+<span class="cline-any cline-yes">48</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">48</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">48</span>
+<span class="cline-any cline-yes">48</span>
+<span class="cline-any cline-yes">48</span>
+<span class="cline-any cline-yes">48</span>
+<span class="cline-any cline-yes">48</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*global rg2:false */
+/*global rg2Config:false */
+/*global GPSTrack:false */
+// handle drawing of a new route
+function Draw() {
+  this.trackColor = '#ff0000';
+  this.HANDLE_DOT_RADIUS = 7;
+  this.hasResults = false;
+  this.initialiseDrawing();
+}
+&nbsp;
+function RouteData() {
+  this.courseid = null;
+  this.coursename = null;
+  this.resultid = null;
+  this.isScoreCourse = false;
+  this.eventid = null;
+  this.name = null;
+  this.comments = null;
+  this.x = [];
+  this.y = [];
+  this.controlx = [];
+  this.controly = [];
+  this.time = [];
+  this.startsecs = 0;
+  this.totaltime = 0;
+}
+&nbsp;
+Draw.prototype = {
+  Constructor : Draw,
+&nbsp;
+  gpsFileLoaded : function() {
+    return this.gpstrack.fileLoaded;
+  },
+&nbsp;
+  uploadGPS : function(evt) {
+    this.gpstrack.uploadGPS(evt);
+  },
+&nbsp;
+  getControlX : function() {
+    return this.controlx;
+  },
+&nbsp;
+  getControlY : function() {
+    return this.controly;
+  },
+&nbsp;
+  mouseUp : function(x, y, button) {
+    // called after a click at (x, y)
+    var active = $("#rg2-info-panel").tabs("option", "active");
+    var i;
+    var trk;
+    var len;
+    var delta = 3;
+    var h = {};
+    var handle;
+    if (active !== rg2.config.TAB_DRAW) {
+      return;
+    }
+    trk = this.gpstrack;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (trk.fileLoaded) {
+<span class="cstat-no" title="statement not covered" >      handle = this.getHandleClicked(x, y);</span>
+<span class="cstat-no" title="statement not covered" >      if (handle !== undefined) {</span>
+        // delete or unlock if not first or last entry
+<span class="cstat-no" title="statement not covered" >        if ((button === rg2.config.RIGHT_CLICK) &amp;&amp;  (handle !== 0) &amp;&amp; (handle !== trk.handles.length)) {</span>
+<span class="cstat-no" title="statement not covered" >          if (trk.handles[handle].locked) {</span>
+            // unlock, don't delete
+<span class="cstat-no" title="statement not covered" >            trk.handles[handle].locked = false;</span>
+<span class="cstat-no" title="statement not covered" >            this.pointsLocked -= 1;</span>
+          } else {
+          // delete handle
+<span class="cstat-no" title="statement not covered" >            trk.handles.splice(handle, 1);</span>
+          }
+        } else {
+          // clicked in a handle area so toggle state
+<span class="cstat-no" title="statement not covered" >          if (trk.handles[handle].locked) {</span>
+<span class="cstat-no" title="statement not covered" >            trk.handles[handle].locked = false;</span>
+<span class="cstat-no" title="statement not covered" >            this.pointsLocked -= 1;</span>
+          } else {
+<span class="cstat-no" title="statement not covered" >            trk.handles[handle].locked = true;</span>
+<span class="cstat-no" title="statement not covered" >            this.pointsLocked += 1;</span>
+          }
+        }
+      } else {
+        // not an existing handle so read through track to look for x,y
+<span class="cstat-no" title="statement not covered" >        len = trk.baseX.length;</span>
+<span class="cstat-no" title="statement not covered" >        for ( i = 0; i &lt; len; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >          if ((trk.baseX[i] + delta &gt;= x) &amp;&amp; (trk.baseX[i] - delta &lt;= x) &amp;&amp; (trk.baseY[i] + delta &gt;= y) &amp;&amp; (trk.baseY[i] - delta &lt;= y)) {</span>
+            // found on track so add new handle
+<span class="cstat-no" title="statement not covered" >            h.x = x;</span>
+<span class="cstat-no" title="statement not covered" >            h.y = y;</span>
+<span class="cstat-no" title="statement not covered" >            h.basex = x;</span>
+<span class="cstat-no" title="statement not covered" >            h.basey = y;</span>
+<span class="cstat-no" title="statement not covered" >            h.locked = false;</span>
+<span class="cstat-no" title="statement not covered" >            h.time = i;</span>
+<span class="cstat-no" title="statement not covered" >            trk.handles.push(h);</span>
+<span class="cstat-no" title="statement not covered" >            break;</span>
+          }
+        }
+      }
+    } else {
+      // drawing new track
+      // only allow drawing if we have valid name and course
+      if ((trk.routeData.resultid !== null) &amp;&amp; (trk.routeData.courseid !== null)) {
+        this.addNewPoint(x, y);
+      } else {
+        rg2.showWarningDialog('No course/name', 'Please select course, name and time before you start drawing a route or upload a file.');
+      }
+    }
+  },
+&nbsp;
+  dragEnded : function() {
+    if (this.gpstrack.fileLoaded) {
+      var i;
+      var trk =this.gpstrack;
+      // rebaseline GPS track
+      trk.savedBaseX = trk.baseX.slice(0);
+      trk.savedBaseY = trk.baseY.slice(0);
+      trk.baseX = trk.routeData.x.slice(0);
+      trk.baseY = trk.routeData.y.slice(0);
+      // can't use slice(0) for an array of objects so need to do deep copy in jQuery
+      // see http://stackoverflow.com/questions/122102/most-efficient-way-to-clone-an-object
+      trk.savedHandles = $.extend(true, [], trk.handles);
+      for (i = 0; i &lt; trk.handles.length; i += 1) {
+        trk.handles[i].basex = trk.handles[i].x;
+        trk.handles[i].basey = trk.handles[i].y;
+      }
+      $("#btn-undo-gps-adjust").button("enable");
+    }
+  },
+&nbsp;
+  initialiseDrawing : function() {
+    this.gpstrack = new GPSTrack();
+    this.gpstrack.routeData = new RouteData();
+    this.pointsLocked = 0;
+    this.pendingCourseID = null;
+    // the RouteData versions of these have the start control removed for saving
+    this.controlx = [];
+    this.controly = [];
+    this.nextControl = 0;
+    this.isScoreCourse = false;
+    this.gpstrack.initialiseGPS();
+    this.hasResults = rg2.eventHasResults();
+    if (this.hasResults) {
+      $("#rg2-select-name").show();
+      $("#rg2-enter-name").hide();
+    } else {
+      $("#rg2-select-name").hide();
+      $("#rg2-enter-name").show();
+    }
+    $("#rg2-name-select").prop('disabled', true);
+    $("#rg2-undo").prop('disabled', true);
+    $("#btn-save-route").button("disable");
+    $("#btn-save-gps-route").button("disable");
+    $("#btn-undo").button("disable");
+    $("#btn-three-seconds").button("disable");
+    $("#btn-reset-drawing").button("enable");
+    $("#rg2-name-select").empty();
+    $("#rg2-new-comments").empty().val(rg2.t(rg2.config.DEFAULT_NEW_COMMENT));
+    $("#rg2-event-comments").empty().val(rg2.t(rg2.config.DEFAULT_EVENT_COMMENT));
+    $("#btn-move-all").prop('checked', false);
+    $("#rg2-load-gps-file").button('disable');
+    $("#rg2-name-entry").empty().val('');
+    $("#rg2-time-entry").empty().val('');
+    $("#rg2-name").removeClass('valid');
+    $("#rg2-time").removeClass('valid');
+    rg2.redraw(false);
+  },
+&nbsp;
+  setCourse : function(courseid) {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (!isNaN(courseid)) {
+      if (this.gpstrack.routeData.courseid !== null) {
+        // already have a course so we are trying to change it
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (this.gpstrack.routeData.x.length &gt; 1) {
+          // drawing started so ask to confirm change
+          this.pendingCourseid = courseid;
+          this.confirmCourseChange();
+        } else {
+          // nothing done yet so just change course
+<span class="cstat-no" title="statement not covered" >          if (this.gpstrack.routeData.resultid !== null) {</span>
+<span class="cstat-no" title="statement not covered" >            rg2.putScoreCourseOnDisplay(this.gpstrack.routeData.resultid, false);</span>
+          }
+<span class="cstat-no" title="statement not covered" >          rg2.removeFromDisplay(this.gpstrack.routeData.courseid);</span>
+<span class="cstat-no" title="statement not covered" >          this.initialiseCourse(courseid);</span>
+        }
+      } else {
+        // first time course has been selected
+        this.initialiseCourse(courseid);
+      }
+    }
+  },
+&nbsp;
+  initialiseCourse : function(courseid) {
+    var course;
+    this.gpstrack.routeData.eventid = rg2.getKartatEventID();
+    this.gpstrack.routeData.courseid = courseid;
+    course = rg2.getCourseDetails(courseid);
+    this.isScoreCourse = course.isScoreCourse;
+    if (!this.isScoreCourse) {
+      rg2.putOnDisplay(courseid);
+      this.gpstrack.routeData.coursename = course.name;
+      this.controlx = course.x;
+      this.controly = course.y;
+      this.gpstrack.routeData.x.length = 0;
+      this.gpstrack.routeData.y.length = 0;
+      this.gpstrack.routeData.x[0] = this.controlx[0];
+      this.gpstrack.routeData.y[0] = this.controly[0];
+      this.nextControl = 1;
+    }
+    rg2.createNameDropdown(courseid);
+    $("#rg2-name-select").prop('disabled', false);
+    $("#btn-undo-gps-adjust").button("disable");
+    rg2.redraw(false);
+  },
+&nbsp;
+  confirmCourseChange : function() {
+&nbsp;
+    var msg = "&lt;div id='rg2-course-change-dialog'&gt;The route you have started to draw will be discarded. Are you sure you want to change the course?&lt;/div&gt;";
+    var me = this;
+    $(msg).dialog({
+      title : "Confirm course change",
+      modal : true,
+      dialogClass : "no-close rg2-confirm-change-course",
+      closeOnEscape : false,
+      buttons : [{
+        text : "Change course",
+        click : function() {
+          me.doChangeCourse();
+        }
+      }, {
+        text : "Cancel",
+        click : function() {
+          me.doCancelChangeCourse();
+        }
+      }]
+    });
+  },
+&nbsp;
+  resetDrawing : function() {
+    var msg = "&lt;div id='rg2-drawing-reset-dialog'&gt;All information you have entered will be removed. Are you sure you want to reset?&lt;/div&gt;";
+    var me = this;
+    $(msg).dialog({
+      title : "Confirm reset",
+      modal : true,
+      dialogClass : "no-close rg2-confirm-drawing-reset",
+      closeOnEscape : false,
+      buttons : [{
+        text : "Reset",
+        click : function() {
+          me.doDrawingReset();
+        }
+      }, {
+        text : "Cancel",
+        click : function() {
+          me.doCancelDrawingReset();
+        }
+      }]
+    });
+&nbsp;
+  },
+&nbsp;
+  doChangeCourse : function() {
+    $('#rg2-course-change-dialog').dialog("destroy");
+    rg2.removeFromDisplay(this.gpstrack.routeData.courseid);
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (this.gpstrack.routeData.resultid !== null) {
+      rg2.putScoreCourseOnDisplay(this.gpstrack.routeData.resultid, false);
+    }
+    this.doDrawingReset();
+    this.initialiseCourse(this.pendingCourseid);
+  },
+&nbsp;
+  doCancelChangeCourse : function() {
+    // reset course dropdown
+    $("#rg2-course-select").val(this.gpstrack.routeData.courseid);
+    this.pendingCourseid = null;
+    $('#rg2-course-change-dialog').dialog("destroy");
+  },
+&nbsp;
+  doDrawingReset : function() {
+    $('#rg2-drawing-reset-dialog').dialog("destroy");
+    this.pendingCourseid = null;
+    this.initialiseDrawing();
+  },
+&nbsp;
+  doCancelDrawingReset : function() {
+    $('#rg2-drawing-reset-dialog').dialog("destroy");
+  },
+&nbsp;
+  showCourseInProgress : function() {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.gpstrack.routeData.courseid !== null) {
+<span class="cstat-no" title="statement not covered" >      if (this.isScoreCourse) {</span>
+<span class="cstat-no" title="statement not covered" >        rg2.putScoreCourseOnDisplay(this.gpstrack.routeData.resultid, true);</span>
+      } else {
+<span class="cstat-no" title="statement not covered" >        rg2.putOnDisplay(this.gpstrack.routeData.courseid);</span>
+      }
+    }
+  },
+&nbsp;
+  setName : function(resultid) {
+    // callback from select box when we have results
+    var res;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (!isNaN(resultid)) {
+      res = rg2.getFullResult(resultid);
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (res.hasValidTrack) {
+<span class="cstat-no" title="statement not covered" >        rg2.showWarningDialog("Route already drawn", "If you draw a new route it will overwrite the old route for this runner. GPS routes are saved separately and will not be overwritten.");</span>
+      }
+      // remove old course from display just in case we missed it somewhere else
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (this.gpstrack.routeData.resultid !== null) {
+<span class="cstat-no" title="statement not covered" >        rg2.putScoreCourseOnDisplay(this.gpstrack.routeData.resultid, false);</span>
+      }
+      this.gpstrack.routeData.resultid = res.resultid;
+      this.gpstrack.routeData.name = res.name;
+      // set up individual course if this is a score event
+      if (this.isScoreCourse) {
+        rg2.putScoreCourseOnDisplay(res.resultid, true);
+        this.controlx = res.scorex;
+        this.controly = res.scorey;
+        this.gpstrack.routeData.x.length = 0;
+        this.gpstrack.routeData.y.length = 0;
+        this.gpstrack.routeData.x[0] = this.controlx[0];
+        this.gpstrack.routeData.y[0] = this.controly[0];
+        this.nextControl = 1;
+        rg2.redraw(false);
+      }
+      this.startDrawing();
+    }
+  },
+  
+  setNameAndTime :function(event) {
+    // callback for an entered name when no results available
+    var t;
+    var time;
+    var name = $("#rg2-name-entry").val();
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (name) {
+      $("#rg2-name").addClass('valid');
+    } else {
+<span class="cstat-no" title="statement not covered" >      $("#rg2-name").removeClass('valid');</span>
+    }
+    time = $("#rg2-time-entry").val();
+    // matches something like 0:00 to 999:59
+    if (time.match(/\d+[:.][0-5]\d$/)) {
+      $("#rg2-time").addClass('valid');
+    } else {
+      $("#rg2-time").removeClass('valid');
+      time = null;
+    }
+    if ((name) &amp;&amp; (time)) {
+      time = time.replace(".", ":");
+      this.gpstrack.routeData.name = name;
+      this.gpstrack.routeData.resultid = 0;
+      this.gpstrack.routeData.totaltime = time;
+      this.gpstrack.routeData.startsecs = 0;
+      this.gpstrack.routeData.time[0] = rg2.getSecsFromMMSS(time);
+      this.gpstrack.routeData.totalsecs = rg2.getSecsFromMMSS(time);
+      this.startDrawing();
+    }
+  },
+&nbsp;
+  startDrawing : function() {
+    $("#btn-three-seconds").button('enable');
+    $("#rg2-load-gps-file").button('enable');
+  },
+&nbsp;
+  addNewPoint : function(x, y) {
+&nbsp;
+    // enable here for testing
+    //$("#btn-save-route").button("enable");
+&nbsp;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.closeEnough(x, y)) {
+<span class="cstat-no" title="statement not covered" >      this.gpstrack.routeData.x.push(this.controlx[this.nextControl]);</span>
+<span class="cstat-no" title="statement not covered" >      this.gpstrack.routeData.y.push(this.controly[this.nextControl]);</span>
+<span class="cstat-no" title="statement not covered" >      this.nextControl += 1;</span>
+<span class="cstat-no" title="statement not covered" >      if (this.nextControl === this.controlx.length) {</span>
+<span class="cstat-no" title="statement not covered" >        $("#btn-save-route").button("enable");</span>
+      }
+    } else {
+      this.gpstrack.routeData.x.push(Math.round(x));
+      this.gpstrack.routeData.y.push(Math.round(y));
+    }
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (this.gpstrack.routeData.x.length &gt; 1) {
+      $("#btn-undo").button("enable");
+    } else {
+<span class="cstat-no" title="statement not covered" >      $("#btn-undo").button("disable");</span>
+    }
+    rg2.redraw(false);
+  },
+  
+  undoGPSAdjust : <span class="fstat-no" title="function not covered" >function() {</span>
+    // restore route from before last adjust operation
+<span class="cstat-no" title="statement not covered" >    var trk;</span>
+<span class="cstat-no" title="statement not covered" >    trk = this.gpstrack;</span>
+<span class="cstat-no" title="statement not covered" >    trk.baseX = trk.savedBaseX.slice(0);</span>
+<span class="cstat-no" title="statement not covered" >    trk.baseY = trk.savedBaseY.slice(0);</span>
+<span class="cstat-no" title="statement not covered" >    trk.routeData.x = trk.savedBaseX.slice(0);</span>
+<span class="cstat-no" title="statement not covered" >    trk.routeData.y = trk.savedBaseY.slice(0);</span>
+    // can't use slice(0) for an array of objects so need to do deep copy in jQuery
+    // see http://stackoverflow.com/questions/122102/most-efficient-way-to-clone-an-object
+<span class="cstat-no" title="statement not covered" >    trk.handles = $.extend(true, [], trk.savedHandles);</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = 0; i &lt; trk.handles.length; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >        trk.handles[i].x = trk.handles[i].basex;</span>
+<span class="cstat-no" title="statement not covered" >        trk.handles[i].y = trk.handles[i].basey;</span>
+      }
+<span class="cstat-no" title="statement not covered" >    $("#btn-undo-gps-adjust").button("disable");</span>
+<span class="cstat-no" title="statement not covered" >    rg2.redraw(false);</span>
+  },
+&nbsp;
+  undoLastPoint : function() {
+    // remove last point if we have one
+    var points = this.gpstrack.routeData.x.length;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (points &gt; 1) {
+      // are we undoing from a control?
+      <span class="missing-if-branch" title="if path not taken" >I</span>if ((this.controlx[this.nextControl - 1] === this.gpstrack.routeData.x[points - 1]) &amp;&amp; (<span class="branch-1 cbranch-no" title="branch not covered" >this.controly[this.nextControl - 1] === this.gpstrack.routeData.y[points - 1])</span>) {
+        // are we undoing from the finish?
+<span class="cstat-no" title="statement not covered" >        if (this.nextControl === this.controlx.length) {</span>
+<span class="cstat-no" title="statement not covered" >          $("#btn-save-route").button("disable");</span>
+        }
+        // don't go back past first control
+<span class="cstat-no" title="statement not covered" >        if (this.nextControl &gt; 1) {</span>
+<span class="cstat-no" title="statement not covered" >          this.nextControl -= 1;</span>
+        }
+      }
+      this.gpstrack.routeData.x.pop();
+      this.gpstrack.routeData.y.pop();
+    }
+    // note that array length has changed so can't use points
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (this.gpstrack.routeData.x.length &gt; 1) {
+      $("#btn-undo").button("enable");
+    } else {
+<span class="cstat-no" title="statement not covered" >      $("#btn-undo").button("enable");</span>
+    }
+    rg2.redraw(false);
+  },
+&nbsp;
+  saveGPSRoute : function() {
+    // called to save GPS file route
+    // tidy up route details
+    var i;
+    var l;
+    var t = this.gpstrack.routeData.time[this.gpstrack.routeData.time.length - 1] - this.gpstrack.routeData.time[0];
+    this.gpstrack.routeData.totaltime = rg2.formatSecsAsMMSS(t);
+    // GPS uses UTC: adjust to local time based on local user setting
+    // only affects replay in real time
+    var date = new Date();
+    // returns offset in minutes, so convert to seconds
+    var offset = date.getTimezoneOffset() * 60;
+    this.gpstrack.routeData.startsecs = this.gpstrack.routeData.time[0] - offset;
+        
+    l = this.gpstrack.routeData.x.length;
+    for ( i = 0; i &lt; l; i += 1) {
+      this.gpstrack.routeData.x[i] = Math.round(this.gpstrack.routeData.x[i]);
+      this.gpstrack.routeData.y[i] = Math.round(this.gpstrack.routeData.y[i]);
+      // convert real time seconds to offset seconds from start time
+      this.gpstrack.routeData.time[i] -= this.gpstrack.routeData.startsecs;
+    }
+    // allow for already having a GPS route for this runner
+    this.gpstrack.routeData.resultid += rg2.config.GPS_RESULT_OFFSET;
+    while (rg2.resultIDExists(this.gpstrack.routeData.resultid)) {
+      this.gpstrack.routeData.resultid += rg2.config.GPS_RESULT_OFFSET;
+      // add marker(s) to name to show it is a duplicate
+      this.gpstrack.routeData.name += '*';
+    }
+    this.gpstrack.routeData.comments = $("#rg2-new-comments").val();
+&nbsp;
+    $("#btn-undo-gps-adjust").button("disable");
+    this.postRoute();
+  },
+&nbsp;
+  saveRoute : <span class="fstat-no" title="function not covered" >function() {</span>
+    // called to save manually entered route
+<span class="cstat-no" title="statement not covered" >    this.gpstrack.routeData.comments = $("#rg2-new-comments").val();</span>
+<span class="cstat-no" title="statement not covered" >    this.gpstrack.routeData.controlx = this.controlx;</span>
+<span class="cstat-no" title="statement not covered" >    this.gpstrack.routeData.controly = this.controly;</span>
+    // don't need start control so remove it
+<span class="cstat-no" title="statement not covered" >    this.gpstrack.routeData.controlx.splice(0, 1);</span>
+<span class="cstat-no" title="statement not covered" >    this.gpstrack.routeData.controly.splice(0, 1);</span>
+<span class="cstat-no" title="statement not covered" >    this.postRoute();</span>
+  },
+&nbsp;
+  postRoute : function() {
+    var $url = rg2Config.json_url + '?type=addroute&amp;id=' + this.gpstrack.routeData.eventid;
+    // create JSON data
+    var json = JSON.stringify(this.gpstrack.routeData);
+    var self = this;
+    $.ajax({
+      data : json,
+      type : 'POST',
+      url : $url,
+      dataType : 'json',
+      success : function(data, textStatus, jqXHR) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (data.ok) {
+          self.routeSaved(data.status_msg);
+        } else {
+<span class="cstat-no" title="statement not covered" >          self.saveError(data.status_msg);</span>
+        }
+      },
+      error : <span class="fstat-no" title="function not covered" >function(jqXHR, textStatus, errorThrown) {</span>
+<span class="cstat-no" title="statement not covered" >        self.saveError(errorThrown);</span>
+      }
+    });
+  },
+&nbsp;
+  saveError : <span class="fstat-no" title="function not covered" >function(text) {</span>
+<span class="cstat-no" title="statement not covered" >    rg2.showWarningDialog(this.gpstrack.routeData.name, rg2.t('Your route was not saved. Please try again') + '. ' + text);</span>
+  },
+&nbsp;
+  routeSaved : function(text) {
+    rg2.showWarningDialog(this.gpstrack.routeData.name, rg2.t('Your route has been saved') + '.');
+    rg2.loadEvent(rg2.getActiveEventID());
+  },
+&nbsp;
+  waitThreeSeconds : function() {
+    // insert a new point in the same place as the last point
+    this.gpstrack.routeData.x.push(this.gpstrack.routeData.x[this.gpstrack.routeData.x.length - 1]);
+    this.gpstrack.routeData.y.push(this.gpstrack.routeData.y[this.gpstrack.routeData.y.length - 1]);
+    rg2.redraw(false);
+  },
+&nbsp;
+  // snapto: test if drawn route is close enough to control
+  closeEnough : function(x, y) {
+    var range;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (rg2.getSnapToControl()) {
+      range = 7;
+    } else {
+<span class="cstat-no" title="statement not covered" >      range = 2;</span>
+    }
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (Math.abs(x - this.controlx[this.nextControl]) &lt; range) {
+<span class="cstat-no" title="statement not covered" >      if (Math.abs(y - this.controly[this.nextControl]) &lt; range) {</span>
+<span class="cstat-no" title="statement not covered" >        return true;</span>
+      }
+    }
+    return false;
+  },
+&nbsp;
+  trackLocked : <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    return (this.pointsLocked &gt; 0);</span>
+  },
+&nbsp;
+  adjustTrack : function(x1, y1, x2, y2, button, shiftKeyPressed, ctrlKeyPressed) {
+// called whilst dragging a GPS track
+// TODO: not the greatest function in the world and a candidate for refactoring big-time
+// but it works which is a huge step forward
+    var i;
+    var trk;
+    var len;
+    var lockBefore;
+    var lockAfter;
+    var dragIndex;
+    var handle;
+    var x;
+    var y;
+    var a;
+    var xb;
+    var yb;
+    var xs;
+    var ys;
+    var dx;
+    var dy;
+    var scale1;
+    var scale2;
+    var scale;
+    var oldAngle;
+    var newAngle;
+    var angle;
+    var reverseAngle;
+    var earliest;
+    var latest;
+    var lockedHandle1;
+    var lockedHandle2;
+    var fromTime;
+    var toTime;
+    var backgroundLocked;
+    //console.log("adjustTrack ", x1, y1, x2, y2);
+    backgroundLocked = $('#btn-move-all').prop('checked');
+    <span class="missing-if-branch" title="if path not taken" >I</span>if ((backgroundLocked) || (button === rg2.config.RIGHT_CLICK)) {
+<span class="cstat-no" title="statement not covered" >      rg2.ctx.translate(x2 - x1, y2 - y1);</span>
+    } else {
+      trk = this.gpstrack;
+      len = trk.baseX.length;
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (this.pointsLocked &gt; 0) {
+<span class="cstat-no" title="statement not covered" >        if (this.pointsLocked === 1)  {</span>
+<span class="cstat-no" title="statement not covered" >          handle = this.getLockedHandle();</span>
+          // scale and rotate track around single locked point
+<span class="cstat-no" title="statement not covered" >          oldAngle = rg2.getAngle(x1, y1, handle.basex, handle.basey);</span>
+<span class="cstat-no" title="statement not covered" >          newAngle = rg2.getAngle(x2, y2, handle.basex, handle.basey);</span>
+<span class="cstat-no" title="statement not covered" >          angle = newAngle - oldAngle;</span>
+<span class="cstat-no" title="statement not covered" >          scale1 = rg2.getDistanceBetweenPoints(x1, y1, handle.basex, handle.basey);</span>
+<span class="cstat-no" title="statement not covered" >          scale2 = rg2.getDistanceBetweenPoints(x2, y2, handle.basex, handle.basey);</span>
+<span class="cstat-no" title="statement not covered" >          scale = scale2/scale1;</span>
+          //console.log (x1, y1, x2, y2, handle.basex, handle.basey, scale, angle);
+<span class="cstat-no" title="statement not covered" >          for ( i = 0; i &lt; len; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >            x = trk.baseX[i] - handle.basex;</span>
+<span class="cstat-no" title="statement not covered" >            y = trk.baseY[i] - handle.basey;</span>
+<span class="cstat-no" title="statement not covered" >            trk.routeData.x[i] = (((Math.cos(angle) * x) - (Math.sin(angle) * y)) * scale) + handle.basex;</span>
+<span class="cstat-no" title="statement not covered" >            trk.routeData.y[i] = (((Math.sin(angle) * x) + (Math.cos(angle) * y)) * scale) + handle.basey;</span>
+          }
+<span class="cstat-no" title="statement not covered" >          for (i = 0; i &lt; trk.handles.length; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >            if (!trk.handles[i].locked) {</span>
+<span class="cstat-no" title="statement not covered" >              x = trk.handles[i].basex - handle.basex;</span>
+<span class="cstat-no" title="statement not covered" >              y = trk.handles[i].basey - handle.basey;</span>
+<span class="cstat-no" title="statement not covered" >              trk.handles[i].x = (((Math.cos(angle) * x) - (Math.sin(angle) * y)) * scale) + handle.basex;</span>
+<span class="cstat-no" title="statement not covered" >              trk.handles[i].y = (((Math.sin(angle) * x) + (Math.cos(angle) * y)) * scale) + handle.basey;</span>
+            }
+          }
+          
+        } else {
+          // check if start of drag is on a handle
+<span class="cstat-no" title="statement not covered" >          handle = this.getHandleClicked(x1, y1);</span>
+          // we already know we have at least two points locked: cases to deal with from here
+          // 1: drag point not on a handle: exit
+          // 2: drag point on a locked handle: exit
+          // 3: drag point between start and a locked handle: scale and rotate around single point
+          // 4: drag point between locked handle and end: scale and rotate around single handle
+          // 5: drag point between two locked handles: shear around two fixed handles
+          //case 1
+<span class="cstat-no" title="statement not covered" >          if (handle === undefined) {</span>
+            //console.log("Point (" + x1 + ", " + y1 + ") not on track: " + this.pointsLocked + " points locked.");
+<span class="cstat-no" title="statement not covered" >            return;</span>
+          }
+          // case 2
+<span class="cstat-no" title="statement not covered" >          if (trk.handles[handle].locked) {</span>
+            //console.log("Point (" + x1 + ", " + y1 + ") locked: " + this.pointsLocked + " points locked.");
+<span class="cstat-no" title="statement not covered" >            return;</span>
+          }
+<span class="cstat-no" title="statement not covered" >          earliest = this.getEarliestLockedHandle();</span>
+<span class="cstat-no" title="statement not covered" >          latest = this.getLatestLockedHandle();</span>
+          
+<span class="cstat-no" title="statement not covered" >          if ((trk.handles[earliest].time &gt; trk.handles[handle].time) || (trk.handles[latest].time &lt; trk.handles[handle].time)) {</span>
+            // case 3 and 4: floating end point
+<span class="cstat-no" title="statement not covered" >            if (trk.handles[earliest].time &gt; trk.handles[handle].time) {</span>
+<span class="cstat-no" title="statement not covered" >              lockedHandle1 = earliest;</span>
+<span class="cstat-no" title="statement not covered" >              fromTime = 0;</span>
+<span class="cstat-no" title="statement not covered" >              toTime = trk.handles[earliest].time;</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >              lockedHandle1 = latest;</span>
+<span class="cstat-no" title="statement not covered" >              fromTime = trk.handles[latest].time + 1;</span>
+              // second entry is always the last point in the route
+<span class="cstat-no" title="statement not covered" >              toTime = trk.handles[1].time + 1;</span>
+            }
+            // scale and rotate track around single locked point
+<span class="cstat-no" title="statement not covered" >            scale1 = rg2.getDistanceBetweenPoints(x1, y1, trk.handles[lockedHandle1].basex, trk.handles[lockedHandle1].basey);</span>
+<span class="cstat-no" title="statement not covered" >            scale2 = rg2.getDistanceBetweenPoints(x2, y2, trk.handles[lockedHandle1].basex, trk.handles[lockedHandle1].basey);</span>
+<span class="cstat-no" title="statement not covered" >            scale = scale2/scale1;</span>
+<span class="cstat-no" title="statement not covered" >            oldAngle = rg2.getAngle(x1, y1, trk.handles[lockedHandle1].basex, trk.handles[lockedHandle1].basey);</span>
+<span class="cstat-no" title="statement not covered" >            newAngle = rg2.getAngle(x2, y2, trk.handles[lockedHandle1].basex, trk.handles[lockedHandle1].basey);</span>
+<span class="cstat-no" title="statement not covered" >            angle = newAngle - oldAngle;</span>
+            //console.log (x1, y1, x2, y2, trk.handles[handle].basex, trk.handles[handle].basey, scale, angle, fromTime, toTime);
+<span class="cstat-no" title="statement not covered" >            for ( i = fromTime; i &lt; toTime; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >              x = trk.baseX[i] - trk.handles[lockedHandle1].basex;</span>
+<span class="cstat-no" title="statement not covered" >              y = trk.baseY[i] - trk.handles[lockedHandle1].basey;</span>
+<span class="cstat-no" title="statement not covered" >              trk.routeData.x[i] = (((Math.cos(angle) * x) - (Math.sin(angle) * y)) * scale) + trk.handles[lockedHandle1].basex;</span>
+<span class="cstat-no" title="statement not covered" >              trk.routeData.y[i] = (((Math.sin(angle) * x) + (Math.cos(angle) * y)) * scale) + trk.handles[lockedHandle1].basey;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            for (i = 0; i &lt; trk.handles.length; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >              if ((!trk.handles[i].locked) &amp;&amp; (trk.handles[i].time &gt;= fromTime) &amp;&amp; (trk.handles[i].time &lt;= toTime)) {</span>
+<span class="cstat-no" title="statement not covered" >                x = trk.handles[i].basex - trk.handles[lockedHandle1].basex;</span>
+<span class="cstat-no" title="statement not covered" >                y = trk.handles[i].basey - trk.handles[lockedHandle1].basey;</span>
+<span class="cstat-no" title="statement not covered" >                trk.handles[i].x = (((Math.cos(angle) * x) - (Math.sin(angle) * y)) * scale) + trk.handles[lockedHandle1].basex;</span>
+<span class="cstat-no" title="statement not covered" >                trk.handles[i].y = (((Math.sin(angle) * x) + (Math.cos(angle) * y)) * scale) + trk.handles[lockedHandle1].basey;</span>
+              }
+            }
+          } else {
+            // case 5: shear/scale around two locked points 
+            // all based on putting handle1 at (0, 0), rotating handle 2 to be on x-axis and then shearing on x-axis and scaling on y-axis.
+            // there must be a better way...
+            
+<span class="cstat-no" title="statement not covered" >            lockedHandle1 = this.getPreviousLockedHandle(handle);</span>
+<span class="cstat-no" title="statement not covered" >            fromTime = trk.handles[lockedHandle1].time;</span>
+<span class="cstat-no" title="statement not covered" >            lockedHandle2 = this.getNextLockedHandle(handle);</span>
+<span class="cstat-no" title="statement not covered" >            toTime = trk.handles[lockedHandle2].time;</span>
+            //console.log("Point (", x1, ", ", y1, ") in middle of ", lockedHandle1, trk.handles[lockedHandle1].basex, trk.handles[lockedHandle1].basey, " and ",lockedHandle2, trk.handles[lockedHandle2].basex, trk.handles[lockedHandle2].basey);
+<span class="cstat-no" title="statement not covered" >            reverseAngle = rg2.getAngle(trk.handles[lockedHandle1].basex, trk.handles[lockedHandle1].basey, trk.handles[lockedHandle2].basex, trk.handles[lockedHandle2].basey);</span>
+<span class="cstat-no" title="statement not covered" >            angle = (2 * Math.PI) - reverseAngle;</span>
+            
+<span class="cstat-no" title="statement not covered" >            xb = x1 - trk.handles[lockedHandle1].basex;</span>
+<span class="cstat-no" title="statement not covered" >            yb = y1 - trk.handles[lockedHandle1].basey;</span>
+<span class="cstat-no" title="statement not covered" >            x1 = (Math.cos(angle) * xb) - (Math.sin(angle) * yb);</span>
+<span class="cstat-no" title="statement not covered" >            y1 = (Math.sin(angle) * xb) + (Math.cos(angle) * yb);</span>
+                      
+<span class="cstat-no" title="statement not covered" >            xb = x2 - trk.handles[lockedHandle1].basex;</span>
+<span class="cstat-no" title="statement not covered" >            yb = y2 - trk.handles[lockedHandle1].basey;</span>
+<span class="cstat-no" title="statement not covered" >            x2 = (Math.cos(angle) * xb) - (Math.sin(angle) * yb);</span>
+<span class="cstat-no" title="statement not covered" >            y2 = (Math.sin(angle) * xb) + (Math.cos(angle) * yb);</span>
+                        
+<span class="cstat-no" title="statement not covered" >            xb = trk.handles[lockedHandle2].basex - trk.handles[lockedHandle1].basex;</span>
+<span class="cstat-no" title="statement not covered" >            yb = trk.handles[lockedHandle2].basey - trk.handles[lockedHandle1].basey;</span>
+<span class="cstat-no" title="statement not covered" >            x = (Math.cos(angle) * xb) - (Math.sin(angle) * yb);</span>
+<span class="cstat-no" title="statement not covered" >            y = (Math.sin(angle) * xb) + (Math.cos(angle) * yb);</span>
+&nbsp;
+            // calculate scaling factors
+<span class="cstat-no" title="statement not covered" >            a = (x2 - x1) /y1;</span>
+<span class="cstat-no" title="statement not covered" >            scale = y2 / y1;</span>
+            
+<span class="cstat-no" title="statement not covered" >            if (!isFinite(a) || !isFinite(scale)) {</span>
+              // TODO: this will cause trouble when y1 is 0 (or even just very small) but I've never managed to get it to happen
+              // you need to click exactly on a line through the two locked handles: just do nothing for now
+<span class="cstat-no" title="statement not covered" >              console.log("y1 became 0: scale factors invalid", a, scale);</span>
+<span class="cstat-no" title="statement not covered" >              return;</span>
+            }
+            // recalculate all points between locked handles          
+<span class="cstat-no" title="statement not covered" >            for ( i = fromTime + 1; i &lt; toTime; i += 1) {</span>
+              // translate to put locked point at origin
+<span class="cstat-no" title="statement not covered" >              xb = trk.baseX[i] - trk.handles[lockedHandle1].basex;</span>
+<span class="cstat-no" title="statement not covered" >              yb = trk.baseY[i] - trk.handles[lockedHandle1].basey;</span>
+              // rotate to give locked points as x-axis
+<span class="cstat-no" title="statement not covered" >              x = (Math.cos(angle) * xb) - (Math.sin(angle) * yb);</span>
+<span class="cstat-no" title="statement not covered" >              y = (Math.sin(angle) * xb) + (Math.cos(angle) * yb);</span>
+              
+              // shear/stretch
+<span class="cstat-no" title="statement not covered" >              xs = x + (y * a);</span>
+<span class="cstat-no" title="statement not covered" >              ys = y * scale;</span>
+              
+              // rotate and translate back
+<span class="cstat-no" title="statement not covered" >              trk.routeData.x[i] = (Math.cos(reverseAngle) * xs) - (Math.sin(reverseAngle) * ys) + trk.handles[lockedHandle1].basex;</span>
+<span class="cstat-no" title="statement not covered" >              trk.routeData.y[i] = (Math.sin(reverseAngle) * xs) + (Math.cos(reverseAngle) * ys) + trk.handles[lockedHandle1].basey;</span>
+&nbsp;
+            }
+            // recalculate all handles between locked handles
+<span class="cstat-no" title="statement not covered" >            for (i = 0; i &lt; trk.handles.length; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >              if ((!trk.handles[i].locked) &amp;&amp; (trk.handles[i].time &gt;= fromTime) &amp;&amp; (trk.handles[i].time &lt;= toTime)) {</span>
+<span class="cstat-no" title="statement not covered" >                xb = trk.handles[i].basex - trk.handles[lockedHandle1].basex;</span>
+<span class="cstat-no" title="statement not covered" >                yb = trk.handles[i].basey - trk.handles[lockedHandle1].basey;</span>
+                
+                // rotate to give locked points as x-axis
+<span class="cstat-no" title="statement not covered" >                x = (Math.cos(angle) * xb) - (Math.sin(angle) * yb);</span>
+<span class="cstat-no" title="statement not covered" >                y = (Math.sin(angle) * xb) + (Math.cos(angle) * yb);</span>
+              
+                // shear/stretch
+<span class="cstat-no" title="statement not covered" >                xs = x + (y * a);</span>
+<span class="cstat-no" title="statement not covered" >                ys = y * scale;</span>
+                             
+<span class="cstat-no" title="statement not covered" >                trk.handles[i].x = ((Math.cos(reverseAngle) * xs) - (Math.sin(reverseAngle) * ys)) + trk.handles[lockedHandle1].basex;</span>
+<span class="cstat-no" title="statement not covered" >                trk.handles[i].y = ((Math.sin(reverseAngle) * xs) + (Math.cos(reverseAngle) * ys)) + trk.handles[lockedHandle1].basey;</span>
+              }
+            }
+          }
+          
+        }
+      } else {
+        // nothing locked so drag track
+        dx = x2 - x1;
+        dy = y2 - y1;
+        for ( i = 0; i &lt; len; i += 1) {
+          trk.routeData.x[i] = trk.baseX[i] + dx;
+          trk.routeData.y[i] = trk.baseY[i] + dy;
+        }
+        for (i = 0; i &lt; trk.handles.length; i += 1) {
+          trk.handles[i].x = trk.handles[i].basex + dx;
+          trk.handles[i].y = trk.handles[i].basey + dy;
+        }
+      }
+    }
+  },
+  
+  // find if the click was on an existing handle
+  // return: handle index or undefined
+  // basex and basey are handle locations at the start of the drag which is what we are interested in
+  getHandleClicked: <span class="fstat-no" title="function not covered" >function (x, y) {</span>
+    //console.log("Get handle clicked for " + x + ", " + y);
+<span class="cstat-no" title="statement not covered" >    var i;</span>
+<span class="cstat-no" title="statement not covered" >    var distance;</span>
+<span class="cstat-no" title="statement not covered" >    for (i = 0; i &lt; this.gpstrack.handles.length; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >      distance = rg2.getDistanceBetweenPoints(x, y, this.gpstrack.handles[i].basex, this.gpstrack.handles[i].basey);</span>
+<span class="cstat-no" title="statement not covered" >      if (distance &lt;= this.HANDLE_DOT_RADIUS) {</span>
+<span class="cstat-no" title="statement not covered" >        return i;</span>
+      }
+    }
+<span class="cstat-no" title="statement not covered" >    return undefined;</span>
+  },
+  
+  // called when we know there is only one locked handle
+  // return: handle object or undefined
+  getLockedHandle: <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    var i;</span>
+<span class="cstat-no" title="statement not covered" >    for (i = 0; i &lt; this.gpstrack.handles.length; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >      if (this.gpstrack.handles[i].locked) {</span>
+<span class="cstat-no" title="statement not covered" >        return this.gpstrack.handles[i];</span>
+      }
+    }
+<span class="cstat-no" title="statement not covered" >    return undefined;</span>
+  },
+  
+  // called to find earliest locked handle
+  getEarliestLockedHandle: <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    var i;</span>
+<span class="cstat-no" title="statement not covered" >    var earliest = 99999;</span>
+<span class="cstat-no" title="statement not covered" >    var handle;</span>
+<span class="cstat-no" title="statement not covered" >    for (i = 0; i &lt; this.gpstrack.handles.length; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >      if (this.gpstrack.handles[i].locked) {</span>
+<span class="cstat-no" title="statement not covered" >        if (this.gpstrack.handles[i].time &lt; earliest) {</span>
+<span class="cstat-no" title="statement not covered" >          earliest = this.gpstrack.handles[i].time;</span>
+<span class="cstat-no" title="statement not covered" >          handle = i;</span>
+        }
+      }
+    }
+<span class="cstat-no" title="statement not covered" >    return handle;</span>
+  },
+&nbsp;
+  // called to find latest locked handle
+  getLatestLockedHandle: <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    var i;</span>
+<span class="cstat-no" title="statement not covered" >    var latest = -1;</span>
+<span class="cstat-no" title="statement not covered" >    var handle;</span>
+<span class="cstat-no" title="statement not covered" >    for (i = 0; i &lt; this.gpstrack.handles.length; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >      if (this.gpstrack.handles[i].locked) {</span>
+<span class="cstat-no" title="statement not covered" >        if (this.gpstrack.handles[i].time &gt; latest) {</span>
+<span class="cstat-no" title="statement not covered" >          latest = this.gpstrack.handles[i].time;</span>
+<span class="cstat-no" title="statement not covered" >          handle = i;</span>
+        }
+      }
+    }
+<span class="cstat-no" title="statement not covered" >    return handle;</span>
+  },
+&nbsp;
+  getPreviousLockedHandle: <span class="fstat-no" title="function not covered" >function(handle) {</span>
+<span class="cstat-no" title="statement not covered" >    var i;</span>
+    // max diff possible is last entry time
+<span class="cstat-no" title="statement not covered" >    var minDiff = this.gpstrack.handles[1].time;</span>
+<span class="cstat-no" title="statement not covered" >    var time = this.gpstrack.handles[handle].time;</span>
+<span class="cstat-no" title="statement not covered" >    var previous;</span>
+<span class="cstat-no" title="statement not covered" >    for (i = 0; i &lt; this.gpstrack.handles.length; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >      if (((time - this.gpstrack.handles[i].time) &lt; minDiff) &amp;&amp; (this.gpstrack.handles[i].time &lt; time) &amp;&amp; this.gpstrack.handles[i].locked) {</span>
+<span class="cstat-no" title="statement not covered" >        minDiff = time - this.gpstrack.handles[i].time;</span>
+<span class="cstat-no" title="statement not covered" >        previous = i;</span>
+      }
+    }
+<span class="cstat-no" title="statement not covered" >    return previous;</span>
+  },
+&nbsp;
+  getNextLockedHandle: <span class="fstat-no" title="function not covered" >function(handle) {</span>
+<span class="cstat-no" title="statement not covered" >    var i;</span>
+<span class="cstat-no" title="statement not covered" >    var l;</span>
+    // max diff possible is last entry time
+<span class="cstat-no" title="statement not covered" >    var minDiff = this.gpstrack.handles[1].time;</span>
+<span class="cstat-no" title="statement not covered" >    var time = this.gpstrack.handles[handle].time;</span>
+<span class="cstat-no" title="statement not covered" >    var next;</span>
+<span class="cstat-no" title="statement not covered" >    l = this.gpstrack.handles.length;</span>
+<span class="cstat-no" title="statement not covered" >    for (i = 0; i &lt; l; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >      if (((this.gpstrack.handles[i].time - time) &lt; minDiff) &amp;&amp; (this.gpstrack.handles[i].time &gt; time) &amp;&amp; this.gpstrack.handles[i].locked) {</span>
+<span class="cstat-no" title="statement not covered" >        minDiff = this.gpstrack.handles[i].time - time;</span>
+<span class="cstat-no" title="statement not covered" >        next = i;</span>
+      }
+    }
+<span class="cstat-no" title="statement not covered" >    return next;</span>
+  },
+&nbsp;
+  drawNewTrack : function() {
+    var i;
+    var l;
+    var opt = rg2.getOverprintDetails();
+    rg2.ctx.lineWidth = opt.overprintWidth;
+    rg2.ctx.strokeStyle = this.trackColor;
+    rg2.ctx.fillStyle = this.trackColour;
+    rg2.ctx.font = '10pt Arial';
+    rg2.ctx.textAlign = "left";
+    rg2.ctx.globalAlpha = 1.0;
+    // highlight next control if we have a course selected
+    if ((this.nextControl &gt; 0) &amp;&amp; (!this.gpstrack.fileLoaded)) {
+      rg2.ctx.beginPath();
+      if (this.nextControl &lt; (this.controlx.length - 1)) {
+        // normal control
+        rg2.ctx.arc(this.controlx[this.nextControl], this.controly[this.nextControl], opt.controlRadius, 0, 2 * Math.PI, false);
+      } else {
+        // finish
+        rg2.ctx.arc(this.controlx[this.nextControl], this.controly[this.nextControl], opt.finishInnerRadius, 0, 2 * Math.PI, false);
+        rg2.ctx.stroke();
+        rg2.ctx.beginPath();
+        rg2.ctx.arc(this.controlx[this.nextControl], this.controly[this.nextControl], opt.finishOuterRadius, 0, 2 * Math.PI, false);
+      }
+      // dot at centre of control circle
+      rg2.ctx.fillRect(this.controlx[this.nextControl] - 1, this.controly[this.nextControl] - 1, 3, 3);
+      rg2.ctx.stroke();
+      // dot at start of route
+      rg2.ctx.beginPath();
+      rg2.ctx.arc(this.gpstrack.routeData.x[0] + (rg2.config.RUNNER_DOT_RADIUS / 2), this.gpstrack.routeData.y[0], rg2.config.RUNNER_DOT_RADIUS, 0, 2 * Math.PI, false);
+      rg2.ctx.fill();
+    }
+    // route itself
+    if (this.gpstrack.routeData.x.length &gt; 1) {
+      rg2.ctx.beginPath();
+      rg2.ctx.moveTo(this.gpstrack.routeData.x[0], this.gpstrack.routeData.y[0]);
+      // don't bother with +3 second displays in GPS adjustment
+      l = this.gpstrack.routeData.x.length;
+      for (i = 1; i &lt; l; i += 1) {
+        rg2.ctx.lineTo(this.gpstrack.routeData.x[i], this.gpstrack.routeData.y[i]);
+      }
+      rg2.ctx.stroke();
+    }
+    // locked points
+    l = this.gpstrack.handles.length;
+    for (i = 0; i &lt; l; i += 1) {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (this.gpstrack.handles[i].locked === true) {
+<span class="cstat-no" title="statement not covered" >        rg2.ctx.fillStyle = rg2.config.RED;</span>
+      } else {
+        rg2.ctx.fillStyle = rg2.config.GREEN;
+      }
+      rg2.ctx.strokestyle = rg2.config.PURPLE;
+      rg2.ctx.beginPath();
+      rg2.ctx.arc(this.gpstrack.handles[i].x, this.gpstrack.handles[i].y, this.HANDLE_DOT_RADIUS, 0, 2 * Math.PI, false);
+      rg2.ctx.fill();
+      rg2.ctx.stroke();
+    }
+  }
+};</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Dec 07 2014 17:49:16 GMT+0000 (GMT Standard Time)</div>
+</div>
+
+<script src="../prettify.js"></script>
+
+<script src="https://yui-s.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>

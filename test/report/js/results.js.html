@@ -1,0 +1,3019 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for js/results.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("https://yui-s.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">js/results.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">97.2% <small>(521 / 536)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">93.33% <small>(154 / 165)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">100% <small>(41 / 41)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">97.2% <small>(521 / 536)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">js\</a> &#187; results.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+871
+872
+873
+874
+875
+876
+877
+878
+879
+880
+881
+882
+883
+884
+885
+886
+887
+888
+889
+890
+891
+892
+893
+894
+895
+896
+897
+898
+899
+900</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">80</span>
+<span class="cline-any cline-yes">80</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">80</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">1320</span>
+<span class="cline-any cline-yes">1320</span>
+<span class="cline-any cline-yes">1320</span>
+<span class="cline-any cline-yes">1320</span>
+<span class="cline-any cline-yes">1320</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">1320</span>
+<span class="cline-any cline-yes">1320</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14760</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">2991</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">219271</span>
+<span class="cline-any cline-yes">979</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">979</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42</span>
+<span class="cline-any cline-yes">42</span>
+<span class="cline-any cline-yes">42</span>
+<span class="cline-any cline-yes">11214</span>
+<span class="cline-any cline-yes">1638</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">1320</span>
+<span class="cline-any cline-yes">1320</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1296</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1296</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1296</span>
+<span class="cline-any cline-yes">23904</span>
+<span class="cline-any cline-yes">23904</span>
+<span class="cline-any cline-yes">393036</span>
+<span class="cline-any cline-yes">23520</span>
+<span class="cline-any cline-yes">23520</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23904</span>
+<span class="cline-any cline-yes">384</span>
+<span class="cline-any cline-yes">384</span>
+<span class="cline-any cline-yes">384</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">527</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">527</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">527</span>
+<span class="cline-any cline-yes">10144</span>
+<span class="cline-any cline-yes">10144</span>
+<span class="cline-any cline-yes">2420004</span>
+<span class="cline-any cline-yes">367074</span>
+<span class="cline-any cline-yes">367074</span>
+<span class="cline-any cline-yes">367074</span>
+<span class="cline-any cline-yes">367074</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10144</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10144</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">367074</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">2042</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1557924</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">539</span>
+<span class="cline-any cline-yes">539</span>
+<span class="cline-any cline-yes">124357</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">15093</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">539</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">340</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">10947</span>
+<span class="cline-any cline-yes">10947</span>
+<span class="cline-any cline-yes">10332</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10332</span>
+<span class="cline-any cline-yes">10332</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10947</span>
+<span class="cline-any cline-yes">1640</span>
+<span class="cline-any cline-yes">1025</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">615</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1892</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4218</span>
+<span class="cline-any cline-yes">4218</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4218</span>
+<span class="cline-any cline-yes">4218</span>
+<span class="cline-any cline-yes">4218</span>
+<span class="cline-any cline-yes">1038853</span>
+<span class="cline-any cline-yes">1038853</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">268</span>
+<span class="cline-any cline-yes">268</span>
+<span class="cline-any cline-yes">268</span>
+<span class="cline-any cline-yes">153</span>
+<span class="cline-any cline-yes">153</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">115</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">68</span>
+<span class="cline-any cline-yes">18156</span>
+<span class="cline-any cline-yes">1786</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">68</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">5607</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">232</span>
+<span class="cline-any cline-yes">232</span>
+<span class="cline-any cline-yes">61944</span>
+<span class="cline-any cline-yes">1698</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">232</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">268</span>
+<span class="cline-any cline-yes">268</span>
+<span class="cline-any cline-yes">71556</span>
+<span class="cline-any cline-yes">1698</span>
+<span class="cline-any cline-yes">1698</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">268</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">80</span>
+<span class="cline-any cline-yes">2962</span>
+<span class="cline-any cline-yes">74</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">126416</span>
+<span class="cline-any cline-yes">932</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">55</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">126416</span>
+<span class="cline-any cline-yes">932</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">55</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">57</span>
+<span class="cline-any cline-yes">15219</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">57</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">68</span>
+<span class="cline-any cline-yes">18156</span>
+<span class="cline-any cline-yes">1786</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">68</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">134855</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">133605</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">86</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">193868</span>
+<span class="cline-any cline-yes">47635</span>
+<span class="cline-any cline-yes">146233</span>
+<span class="cline-any cline-yes">21210</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">125023</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">25692</span>
+<span class="cline-any cline-yes">25692</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">851</span>
+<span class="cline-any cline-yes">118</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">733</span>
+<span class="cline-any cline-yes">733</span>
+<span class="cline-any cline-yes">603</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">130</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">733</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">733</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">851</span>
+<span class="cline-any cline-yes">851</span>
+<span class="cline-any cline-yes">851</span>
+<span class="cline-any cline-yes">851</span>
+<span class="cline-any cline-yes">851</span>
+<span class="cline-any cline-yes">851</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25692</span>
+<span class="cline-any cline-yes">1320</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24372</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25692</span>
+<span class="cline-any cline-yes">845</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24847</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25692</span>
+<span class="cline-any cline-yes">3677</span>
+<span class="cline-any cline-yes">3677</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22015</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25692</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">118</span>
+<span class="cline-any cline-yes">118</span>
+<span class="cline-any cline-yes">111</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">118</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">118</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-yes">10947</span>
+<span class="cline-any cline-yes">287</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">41</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">3405</span>
+<span class="cline-any cline-yes">1072</span>
+<span class="cline-any cline-yes">1072</span>
+<span class="cline-any cline-yes">1072</span>
+<span class="cline-any cline-yes">1072</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">80</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15093</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">36</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">55</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">80</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7421</span>
+<span class="cline-any cline-yes">1281</span>
+<span class="cline-any cline-yes">903</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1281</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17031</span>
+<span class="cline-any cline-yes">2719</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2237</span>
+<span class="cline-any cline-yes">2237</span>
+<span class="cline-any cline-yes">2237</span>
+<span class="cline-any cline-yes">2237</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2237</span>
+<span class="cline-any cline-yes">2237</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1038853</span>
+<span class="cline-any cline-yes">1038853</span>
+<span class="cline-any cline-yes">1756</span>
+<span class="cline-any cline-yes">1756</span>
+<span class="cline-any cline-yes">1756</span>
+<span class="cline-any cline-yes">1756</span>
+<span class="cline-any cline-yes">1756</span>
+<span class="cline-any cline-yes">1756</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1756</span>
+<span class="cline-any cline-yes">1756</span>
+<span class="cline-any cline-yes">1756</span>
+<span class="cline-any cline-yes">1756</span>
+<span class="cline-any cline-yes">1756</span>
+<span class="cline-any cline-yes">1756</span>
+<span class="cline-any cline-yes">1756</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1139520</span>
+<span class="cline-any cline-yes">1139520</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">47285</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1092235</span>
+<span class="cline-any cline-yes">28149</span>
+<span class="cline-any cline-yes">4138</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28149</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1139520</span>
+<span class="cline-any cline-yes">1139520</span>
+<span class="cline-any cline-yes">1139520</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1756</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1038853</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-yes">3627</span>
+<span class="cline-any cline-yes">3627</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3510</span>
+<span class="cline-any cline-yes">3510</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3627</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3510</span>
+<span class="cline-any cline-yes">3510</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3627</span>
+<span class="cline-any cline-yes">3627</span>
+<span class="cline-any cline-yes">3627</span>
+<span class="cline-any cline-yes">3627</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-yes">3510</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">117</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1238</span>
+<span class="cline-any cline-yes">1238</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">313525</span>
+<span class="cline-any cline-yes">313525</span>
+<span class="cline-any cline-yes">313525</span>
+<span class="cline-any cline-yes">313525</span>
+<span class="cline-any cline-yes">313525</span>
+<span class="cline-any cline-yes">313525</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">313525</span>
+<span class="cline-any cline-yes">30503</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30503</span>
+<span class="cline-any cline-yes">30503</span>
+<span class="cline-any cline-yes">30503</span>
+<span class="cline-any cline-yes">30503</span>
+<span class="cline-any cline-yes">30503</span>
+<span class="cline-any cline-yes">344028</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30503</span>
+<span class="cline-any cline-yes">30503</span>
+<span class="cline-any cline-yes">30503</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29253</span>
+<span class="cline-any cline-yes">29253</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1250</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">1107217</span>
+<span class="cline-any cline-yes">1107217</span>
+<span class="cline-any cline-yes">1107217</span>
+<span class="cline-any cline-yes">1107217</span>
+<span class="cline-any cline-yes">1107217</span>
+<span class="cline-any cline-yes">1107217</span>
+<span class="cline-any cline-yes">1107217</span>
+<span class="cline-any cline-yes">10426</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1107217</span>
+<span class="cline-any cline-yes">1107217</span>
+<span class="cline-any cline-yes">1107217</span>
+<span class="cline-any cline-yes">1107217</span>
+<span class="cline-any cline-yes">1107217</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">987</span>
+<span class="cline-any cline-yes">1106230</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">315753</span>
+<span class="cline-any cline-yes">315753</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">790477</span>
+<span class="cline-any cline-yes">790477</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1106230</span>
+<span class="cline-any cline-yes">1106230</span>
+<span class="cline-any cline-yes">32470</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1106230</span>
+<span class="cline-any cline-yes">1106230</span>
+<span class="cline-any cline-yes">42611</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1106230</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-yes">216166</span>
+<span class="cline-any cline-yes">35462</span>
+<span class="cline-any cline-yes">35462</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">216166</span>
+<span class="cline-any cline-yes">19382</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16080</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*global rg2:false */
+/* global he:false */
+function Results() {
+	this.results = [];
+}
+&nbsp;
+Results.prototype = {
+	Constructor : Results,
+&nbsp;
+	addResults : function(data, isScoreEvent) {
+		var i;
+		var j;
+		var result;
+		var id;
+		var baseresult;
+		var variant;
+		var codes;
+		var scorex;
+		var scorey;
+		var l = data.length;
+		// extract score course details if necessary
+    if (isScoreEvent) {
+      codes = [];
+      scorex = [];
+      scorey = [];
+      // details are only sent the first time a variant occurs (to reduce file size quite a lot in some cases)
+      // so need to extract them for use later
+      for (i = 0; i &lt; l; i += 1) {
+        variant = data[i].variant;
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof codes[variant] === 'undefined') {
+          codes[variant] = data[i].scorecodes;
+          scorex[variant] = data[i].scorex;
+          scorey[variant] = data[i].scorey;
+        }
+      }
+    }
+    // save each result
+		for (i = 0; i &lt; l; i += 1) {
+			if (isScoreEvent) {
+        variant = data[i].variant;
+        result = new Result(data[i], isScoreEvent, codes[variant], scorex[variant], scorey[variant]);
+			} else {
+        result = new Result(data[i], isScoreEvent);
+			}
+			this.results.push(result);
+		}
+    // don't get score course info for GPS tracks so find it from original result
+    for (i = 0; i &lt; this.results.length; i += 1) {
+      if (this.results[i].resultid &gt;= rg2.config.GPS_RESULT_OFFSET) {
+        id = this.results[i].resultid;
+        while (id &gt;= rg2.config.GPS_RESULT_OFFSET) {
+          id -= rg2.config.GPS_RESULT_OFFSET;
+        }
+        for (j = 0; j &lt; this.results.length; j += 1) {
+          if (id === this.results[j].resultid) {
+            baseresult = this.getFullResult(j);
+          }
+        }
+        if (typeof baseresult !== 'undefined') {
+          if (typeof baseresult.scorex !== 'undefined') {
+            this.results[i].scorex = baseresult.scorex;
+            this.results[i].scorey = baseresult.scorey;
+            this.results[i].scorecodes = baseresult.scorecodes;
+          }
+        }
+      }
+    }
+    this.generateLegPositions();
+	},
+&nbsp;
+  // lists all runners on a given course
+  getAllRunnersForCourse : function(courseid) {
+    var i;
+    var runners = [];
+    for (i = 0; i &lt; this.results.length; i += 1) {
+      if (this.results[i].courseid === courseid) {
+        runners.push(i);
+      }
+    }
+    return runners;
+  },
+&nbsp;
+  // read through results to get list of all controls on score courses
+  // since there is no master list of controls!
+  generateScoreCourses: function () {
+    var i;
+    var j;
+    var k;
+    var res;
+    var courses;
+    var codes;
+    var x;
+    var y;
+    var newControl;
+    var courseid;
+    courses = [];
+    codes = [];
+    x = [];
+    y = [];
+    for (i = 0; i &lt; this.results.length; i += 1) {
+      res = this.results[i];
+      if (res.resultid &gt;= rg2.config.GPS_RESULT_OFFSET) {
+        continue;
+      }
+      courseid = res.courseid;
+      // save courseid if it is new
+      if (courses.indexOf(courseid) === -1) {
+        courses.push(courseid);
+        codes[courseid] = [];
+        x[courseid] = [];
+        y[courseid] = [];
+      }
+      // read all controls for this result and save if new
+      for (j = 0; j &lt; res.scorecodes.length; j += 1) {
+        newControl = true;
+        for (k = 0; k &lt; codes[courseid].length; k += 1) {
+          if (res.scorecodes[j] === codes[courseid][k]) {
+            newControl = false;
+            break;
+          }
+        }
+        if (newControl) {
+          codes[courseid].push(res.scorecodes[j]);
+          x[courseid].push(res.scorex[j]);
+          y[courseid].push(res.scorey[j]);
+        }
+      }
+      
+    }
+    // save the details we have just generated
+    for (i = 0; i &lt; courses.length; i += 1) {
+      courseid = courses[i];
+      rg2.updateScoreCourse(courseid, codes[courseid], x[courseid], y[courseid]);
+    }
+  },
+&nbsp;
+  generateLegPositions: function() {
+    var i;
+    var j;
+    var k;
+    var courses;
+    var controls;
+    courses = [];
+    controls = [];
+    for (i = 0; i &lt; this.results.length; i += 1) {
+      if (courses.indexOf(this.results[i].courseid) === -1) {
+        courses.push(this.results[i].courseid);
+        // not a good way fo finding number of controls: better to get from courses?
+        controls.push(this.results[i].splits.length);
+      }
+    
+    }
+    var pos = [];
+    var p;
+    for (i = 0; i &lt; courses.length; i += 1) {
+      //console.log("Generate positions for course " + courses[i]);
+&nbsp;
+      // start at 1 since 0 is time 0
+      for (k = 1; k &lt; controls[i]; k += 1) {
+        pos.length = 0;
+        for (j = 0; j &lt; this.results.length; j += 1) {
+          if (this.results[j].courseid === courses[i]) {
+            p = {};
+            p.time = this.results[j].splits[k];
+            p.id = j;
+            pos.push(p);
+          }
+        }
+        pos.sort(this.sortTimes);
+        //console.log(pos);
+        for (j = 0; j &lt; pos.length; j+= 1) {
+          // no allowance for ties yet
+          this.results[pos[j].id].legpos[k] = j + 1;
+        }
+      }
+    }
+  },
+&nbsp;
+  putScoreCourseOnDisplay : function(resultid, display) {
+    var i;
+    for (i = 0; i &lt; this.results.length; i += 1) {
+      if (this.results[i].resultid === resultid) {
+        this.results[i].displayScoreCourse = display;
+      }
+    }
+&nbsp;
+  },
+  
+&nbsp;
+  displayScoreCourse : function(id, display) {
+   this.results[id].displayScoreCourse = display;
+  },
+  
+  sortTimes : function(a, b) {
+    return a.time - b.time;
+  },
+  
+	countResultsByCourseID : function(courseid) {
+		var count = 0;
+		for (var i = 0; i &lt; this.results.length; i += 1) {
+			if (this.results[i].courseid === courseid) {
+        // don't double-count GPS tracks
+        if (this.results[i].resultid &lt; rg2.config.GPS_RESULT_OFFSET) {
+        count += 1;
+				}
+			}
+&nbsp;
+		}
+		return count;
+	},
+&nbsp;
+  getRoutesForEvent : function() {
+    var routes = [];
+    var route;
+    for (var i = 0; i &lt; this.results.length; i += 1) {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (this.results[i].hasValidTrack) {
+<span class="cstat-no" title="statement not covered" >        route = {};</span>
+<span class="cstat-no" title="statement not covered" >        route.id = i;</span>
+<span class="cstat-no" title="statement not covered" >        route.resultid = this.results[i].resultid;</span>
+<span class="cstat-no" title="statement not covered" >        route.name = this.results[i].name;</span>
+<span class="cstat-no" title="statement not covered" >        route.time = this.results[i].time;</span>
+<span class="cstat-no" title="statement not covered" >        route.coursename = this.results[i].coursename;</span>
+<span class="cstat-no" title="statement not covered" >        routes.push(route);</span>
+      }
+    }
+    return routes;
+  },
+  
+  getResultsInfo : function () {
+    var info = {};
+    var res;
+    var temp;
+    info.results = 0;
+    info.drawnroutes = 0;
+    info.gpsroutes = 0;
+    info.secs = 0;
+    for (var i = 0; i &lt; this.results.length; i += 1) {
+      res = this.results[i];
+      if (res.resultid &lt; rg2.config.GPS_RESULT_OFFSET) {
+        info.results += 1;
+        // beware invalid splits for incomplete runs
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (res.time) {
+          info.secs += res.splits[res.splits.length - 1];
+        }
+      }
+      if (res.hasValidTrack) {
+        if (res.resultid &lt; rg2.config.GPS_RESULT_OFFSET) {
+          info.drawnroutes += 1;
+        } else {
+          info.gpsroutes += 1;
+        }
+      }
+    }
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (info.results &gt; 0) {
+      info.percent = (100 * (info.drawnroutes + info.gpsroutes) / info.results).toFixed(1);
+    } else {
+<span class="cstat-no" title="statement not covered" >      info.percent = 0;</span>
+    }
+    info.time = Math.floor(info.secs / 86400) + " days ";
+    temp = info.secs - (86400 * Math.floor(info.secs / 86400));
+    info.time += Math.floor(temp / 3600) + " hours ";
+    temp = temp - (3600 * Math.floor(temp / 3600));
+    info.time += Math.floor(temp / 60) + " minutes ";
+    info.time += temp - (60 * Math.floor(temp / 60)) + " seconds ";
+    return info;
+  },
+&nbsp;
+	getFullResult : function(resultid) {
+		return this.results[resultid];
+	},
+&nbsp;
+	drawTracks : function() {
+    var showthreesecs;
+    var showGPSspeed;
+    // check if +3 to be displayed once here rather than every time through loop
+    showthreesecs = rg2.showThreeSeconds();
+    showGPSspeed = rg2.showGPSSpeed();
+		for (var i = 0; i &lt; this.results.length; i += 1) {
+			this.results[i].drawTrack(showthreesecs, showGPSspeed);
+			this.results[i].drawScoreCourse();
+		}
+	},
+&nbsp;
+	updateTrackNames : function() {
+		$("#rg2-track-names").empty();
+		var html = this.getDisplayedTrackNames();
+		if (html !== "") {
+			$("#rg2-track-names").append(html);
+			$("#rg2-track-names").show();
+		} else {
+			$("#rg2-track-names").hide();
+		}
+&nbsp;
+	},
+&nbsp;
+	putOneTrackOnDisplay : function(resultid) {
+		this.results[resultid].putTrackOnDisplay();
+		this.updateTrackNames();
+	},
+&nbsp;
+	removeOneTrackFromDisplay : function(resultid) {
+		this.results[resultid].removeTrackFromDisplay();
+		this.updateTrackNames();
+	},
+&nbsp;
+	// add all tracks for one course
+	putTracksOnDisplay : function(courseid) {
+		for (var i = 0; i &lt; this.results.length; i += 1) {
+			if (this.results[i].courseid == courseid) {
+				this.results[i].putTrackOnDisplay();
+			}
+		}
+		this.updateTrackNames();
+	},
+&nbsp;
+	// put all tracks for all courses on display
+	putAllTracksOnDisplay : function() {
+    var i;
+    var l;
+    l = this.results.length;
+		for (i = 0; i &lt; l; i += 1) {
+			this.results[i].putTrackOnDisplay();
+		}
+		this.updateTrackNames();
+	},
+&nbsp;
+  getTracksOnDisplay : function() {
+		var tracks = [];
+		for (var i = 0; i &lt; this.results.length; i += 1) {
+			if (this.results[i].displayTrack) {
+				tracks.push(i);
+			}
+		}
+		return tracks;
+	},
+&nbsp;
+	getDisplayedTrackNames : function() {
+		var html = "";
+		for (var i = 0; i &lt; this.results.length; i += 1) {
+			if (this.results[i].displayTrack) {
+				html += "&lt;p style='color:" + this.results[i].trackColour + ";'&gt;" + rg2.getCourseName(this.results[i].courseid);
+				html += ": " + this.results[i].name + "&lt;/p&gt;";
+			}
+		}
+		return html;
+	},
+&nbsp;
+	resultIDExists : function(resultid) {
+		for (var i = 0; i &lt; this.results.length; i += 1) {
+			if (resultid === this.results[i].resultid) {
+				return true;
+			}
+		}
+		return false;
+	},
+&nbsp;
+	getSplitsForID : function(resultid) {
+		for (var i = 0; i &lt; this.results.length; i += 1) {
+			if (resultid === this.results[i].resultid) {
+				return this.results[i].splits;
+			}
+		}
+		return rg2.config.SPLITS_NOT_FOUND;
+	},
+&nbsp;
+	getTimeForID : function(resultid) {
+		for (var i = 0; i &lt; this.results.length; i += 1) {
+			if (resultid === this.results[i].resultid) {
+				return this.results[i].time;
+			}
+		}
+		return rg2.config.TIME_NOT_FOUND;
+	},
+&nbsp;
+	removeAllTracksFromDisplay : function() {
+		for (var i = 0; i &lt; this.results.length; i += 1) {
+			this.results[i].removeTrackFromDisplay();
+		}
+		this.updateTrackNames();
+	},
+&nbsp;
+	removeTracksFromDisplay : function(courseid) {
+		for (var i = 0; i &lt; this.results.length; i += 1) {
+			if (this.results[i].courseid == courseid) {
+				this.results[i].removeTrackFromDisplay();
+			}
+		}
+		this.updateTrackNames();
+	},
+&nbsp;
+	addTracks : function(tracks) {
+		// this gets passed the json data array
+		var resultIndex;
+		var i;
+		var j;
+		var l;
+		// for each track
+		l = tracks.length;
+		for (i = 0; i &lt; l; i += 1) {
+			resultIndex = tracks[i].resultid;
+			j = 0;
+			// don't add GPS track since we got a better one in the original results
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (resultIndex &lt; rg2.config.GPS_RESULT_OFFSET) {
+				// loop through all results and add it against the correct id
+				while (j &lt; this.results.length) {
+					if (resultIndex == this.results[j].resultid) {
+						this.results[j].addTrack(tracks[i]);
+						break;
+					}
+					j += 1;
+				}
+			}
+		}
+&nbsp;
+	},
+&nbsp;
+	deleteAllResults : function() {
+		this.results.length = 0;
+	},
+&nbsp;
+	sortByCourseIDThenResultID : function(a, b) {
+		if (a.courseid &gt; b.courseid) {
+			return 1;
+		} else if (b.courseid &gt; a.courseid) {
+			return -1;
+		} else {
+			return a.resultid - b.resultid;
+		}
+	},
+&nbsp;
+	formatResultListAsAccordion : function() {
+		// puts all GPS results at bottom of relevant course results
+		this.results.sort(this.sortByCourseIDThenResultID);
+&nbsp;
+		var html = "";
+		var namehtml = "";
+		var temp;
+		var firstCourse = true;
+		var oldCourseID = 0;
+    var i;
+    var l;
+    var tracksForThisCourse = 0;
+    l = this.results.length;
+		for (i = 0; i &lt; l; i += 1) {
+			temp = this.results[i];
+			if (temp.courseid != oldCourseID) {
+				// found a new course so add header
+				if (firstCourse) {
+					firstCourse = false;
+				} else {
+          // add bottom row for all tracks checkboxes
+          // &lt;CAREFUL!&gt; these lines need to be identical to those below
+          html += "&lt;tr class='allitemsrow'&gt;&lt;td&gt;" + rg2.t("All") + "&lt;/td&gt;&lt;td&gt;&lt;/td&gt;";
+          if (tracksForThisCourse &gt; 0) {
+            html += "&lt;td&gt;&lt;input class='allcoursetracks' id=" + oldCourseID + " type=checkbox name=track&gt;&lt;/input&gt;&lt;/td&gt;";
+          } else {
+            html += "&lt;td&gt;&lt;/td&gt;";
+          }
+          html += "&lt;td&gt;&lt;input class='allcoursereplay' id=" + oldCourseID + " type=checkbox name=replay&gt;&lt;/input&gt;&lt;/td&gt;&lt;/tr&gt;";
+          // &lt;/CAREFUL!&gt;
+					html += "&lt;/table&gt;&lt;/div&gt;";
+				}
+				tracksForThisCourse = 0;
+				html += "&lt;h3&gt;" + temp.coursename;
+				html += "&lt;input class='showcourse' id=" + temp.courseid + " type=checkbox name=course title='Show course'&gt;&lt;/input&gt;&lt;/h3&gt;&lt;div&gt;";
+				html += "&lt;table class='resulttable'&gt;&lt;tr&gt;&lt;th&gt;" + rg2.t("Name") + "&lt;/th&gt;&lt;th&gt;" + rg2.t("Time") + "&lt;/th&gt;&lt;th&gt;" + rg2.t("Route");
+				html += "&lt;/th&gt;&lt;th&gt;" + rg2.t("Replay") + "&lt;/th&gt;&lt;/tr&gt;";
+				oldCourseID = temp.courseid;
+			}
+      if (temp.isScoreEvent) {
+        namehtml = "&lt;div&gt;&lt;input class='showscorecourse showscorecourse-" + i + "' id=" + i + " type=checkbox name=scorecourse&gt;&lt;/input&gt; " + temp.name + "&lt;/div&gt;";
+      } else {
+        namehtml = "&lt;div&gt;" + temp.name + "&lt;/div&gt;";
+      }
+      
+			if (temp.comments !== "") {
+				html += '&lt;tr&gt;&lt;td&gt;&lt;a href="#" title="' + temp.comments + '"&gt;' + namehtml + "&lt;/a&gt;&lt;/td&gt;&lt;td&gt;" + temp.time + "&lt;/td&gt;";
+			} else {
+				html += "&lt;tr&gt;&lt;td&gt;" + namehtml + "&lt;/td&gt;&lt;td&gt;" + temp.time + "&lt;/td&gt;";
+			}
+			if (temp.hasValidTrack) {
+        tracksForThisCourse += 1;
+				html += "&lt;td&gt;&lt;input class='showtrack showtrack-" + oldCourseID + "' id=" + i + " type=checkbox name=result&gt;&lt;/input&gt;&lt;/td&gt;";
+			} else {
+				html += "&lt;td&gt;&lt;/td&gt;";
+			}
+			html += "&lt;td&gt;&lt;input class='showreplay showreplay-" + oldCourseID + "' id=" + i + " type=checkbox name=replay&gt;&lt;/input&gt;&lt;/td&gt;&lt;/tr&gt;";
+		}
+		
+		if (html === "") {
+			html = "&lt;p&gt;" + rg2.t("No results available") + "&lt;/p&gt;";
+		} else {
+      // add bottom row for all tracks checkboxes
+      // &lt;CAREFUL!&gt; these lines need to be identical to those above
+      html += "&lt;tr class='allitemsrow'&gt;&lt;td&gt;" + rg2.t("All") + "&lt;/td&gt;&lt;td&gt;&lt;/td&gt;";
+      if (tracksForThisCourse &gt; 0) {
+        html += "&lt;td&gt;&lt;input class='allcoursetracks' id=" + oldCourseID + " type=checkbox name=track&gt;&lt;/input&gt;&lt;/td&gt;";
+      } else {
+        html += "&lt;td&gt;&lt;/td&gt;";
+      }
+      html += "&lt;td&gt;&lt;input class='allcoursereplay' id=" + oldCourseID + " type=checkbox name=replay&gt;&lt;/input&gt;&lt;/td&gt;&lt;/tr&gt;";
+      // &lt;/CAREFUL!&gt;
+      html += "&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;";
+		}
+		return html;
+	},
+&nbsp;
+  getComments : function() {
+    var comments = "";
+    for (var i = 0; i &lt; this.results.length; i += 1) {
+      if (this.results[i].comments !== "") {
+        comments += "&lt;p&gt;&lt;strong&gt;" + this.results[i].name + "&lt;/strong&gt;: " + this.results[i].coursename + ": " + this.results[i].comments + "&lt;/p&gt;";
+      }
+    }
+    return comments;
+  },
+&nbsp;
+	createNameDropdown : function(courseid) {
+		$("#rg2-name-select").empty();
+		var dropdown = document.getElementById("rg2-name-select");
+		var opt = document.createElement("option");
+		opt.value = null;
+		opt.text = rg2.t('Select name');
+		dropdown.options.add(opt);
+		for (var i = 0; i &lt; this.results.length; i += 1) {
+			if (this.results[i].courseid === courseid) {
+				opt = document.createElement("option");
+				opt.value = i;
+				opt.text = this.results[i].name;
+				dropdown.options.add(opt);
+			}
+		}
+		dropdown.options.add(opt);
+	}
+};
+&nbsp;
+function Result(data, isScoreEvent, scorecodes, scorex, scorey) {
+	// resultid is the kartat id value
+	this.resultid = data.resultid;
+	this.isScoreEvent = isScoreEvent;
+	// GPS track ids are normal resultid + GPS_RESULT_OFFSET
+	if (this.resultid &gt;= rg2.config.GPS_RESULT_OFFSET) {
+		this.isGPSTrack = true;
+	} else {
+		//this.name = data.name;
+		this.isGPSTrack = false;
+	}
+	this.name = he.decode(data.name);
+	this.initials = this.getInitials(this.name);
+	this.starttime = data.starttime;
+	this.time = data.time;
+	// get round iconv problem in API for now
+	<span class="missing-if-branch" title="else path not taken" >E</span>if (data.comments !== null) {
+		// unescape special characeters to get sensible text
+		this.comments = he.decode(data.comments);
+	} else {
+<span class="cstat-no" title="statement not covered" >		this.comments = "";</span>
+	}
+	this.coursename = data.coursename;
+	if (this.coursename === "") {
+		this.coursename = data.courseid;
+	}
+	this.courseid = data.courseid;
+	
+	this.splits = data.splits;
+	// insert a 0 split at the start to make life much easier elsewhere
+	this.splits.splice(0, 0, 0);
+&nbsp;
+	<span class="missing-if-branch" title="else path not taken" >E</span>if (data.variant !== "") {
+		// save control locations for score course result
+		this.scorex = scorex;
+		this.scorey = scorey;
+		this.scorecodes = scorecodes;
+	}
+&nbsp;
+	// calculated cumulative distance in pixels
+	this.cumulativeDistance = [];
+	// set true if track includes all expected controls in correct order or is a GPS track
+	this.hasValidTrack = false;
+	this.displayTrack = false;
+	this.displayScoreCourse = false;
+	this.trackColour = null;
+	// raw track data
+	this.trackx = [];
+	this.tracky = [];
+	this.speedColour = [];
+	// interpolated times
+	this.xysecs = [];
+	if (this.isGPSTrack) {
+		// don't get time or splits so need to copy them in from (GPS_RESULT_OFFSET - resultid)
+		this.time = rg2.getTimeForID(this.resultid - rg2.config.GPS_RESULT_OFFSET);
+		// allow for events with no results where there won't be a non-GPS result
+		if (this.time === rg2.config.TIME_NOT_FOUND) {
+      this.time = data.time;
+		}
+		this.splits = rg2.getSplitsForID(this.resultid - rg2.config.GPS_RESULT_OFFSET);
+&nbsp;
+	}
+  this.legpos = [];
+	if (data.gpsx.length &gt; 0) {
+     this.addTrack(data);
+	}
+&nbsp;
+  }
+&nbsp;
+Result.prototype = {
+	Constructor : Result,
+&nbsp;
+	putTrackOnDisplay : function() {
+		if (this.hasValidTrack) {
+      if (this.trackColour === null) {
+        this.trackColour = rg2.getNextRouteColour();
+      }
+			this.displayTrack = true;
+		}
+	},
+&nbsp;
+	removeTrackFromDisplay : function() {
+		if (this.hasValidTrack) {
+			this.displayTrack = false;
+		}
+	},
+	
+	addTrack: function(data) {
+    this.trackx = data.gpsx;
+    this.tracky = data.gpsy;
+    var trackOK;
+    if (this.isGPSTrack) {
+      trackOK = this.expandGPSTrack();
+    } else {
+      trackOK = this.expandNormalTrack();
+    }
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (trackOK) {
+      rg2.incrementTracksCount(this.courseid);
+    }
+	},
+&nbsp;
+	drawTrack : function(showThreeSeconds, showGPSSpeed) {
+		var l;
+		if (this.displayTrack) {
+			rg2.ctx.lineWidth = rg2.getRouteWidth();
+			rg2.ctx.strokeStyle = this.trackColour;
+			rg2.ctx.globalAlpha = rg2.getRouteIntensity();
+      rg2.ctx.fillStyle = this.trackColour;
+      rg2.ctx.font = '10pt Arial';
+      rg2.ctx.textAlign = "left";
+			// set transparency of overprint
+			rg2.ctx.beginPath();
+			rg2.ctx.moveTo(this.trackx[0], this.tracky[0]);
+      var oldx = this.trackx[0];
+      var oldy = this.tracky[0];
+      var stopCount = 0;
+			l = this.trackx.length;
+			for (var i = 1; i &lt; l; i += 1) {
+				// lines
+				rg2.ctx.lineTo(this.trackx[i], this.tracky[i]);
+        if ((this.trackx[i] === oldx) &amp;&amp; (this.tracky[i] === oldy)) {
+          // we haven't moved
+          stopCount += 1;
+        } else {
+          // we have started moving again
+          if (stopCount &gt; 0) {
+            if (!this.isGPSTrack || (this.isGPSTrack &amp;&amp; showThreeSeconds)) {
+              rg2.ctx.fillText("+" + (3 * stopCount), oldx + 5, oldy + 5);
+            }
+            stopCount = 0;
+          }
+        }
+        oldx = this.trackx[i];
+        oldy = this.tracky[i];
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this.isGPSTrack &amp;&amp; showGPSSpeed) {
+<span class="cstat-no" title="statement not covered" >          rg2.ctx.strokeStyle = this.speedColour[i];</span>
+<span class="cstat-no" title="statement not covered" >          rg2.ctx.stroke();</span>
+<span class="cstat-no" title="statement not covered" >          rg2.ctx.beginPath();</span>
+<span class="cstat-no" title="statement not covered" >          rg2.ctx.moveTo(oldx, oldy);</span>
+        }
+			}
+			rg2.ctx.stroke();
+		}
+	},
+&nbsp;
+drawScoreCourse : function() {
+    // draws a score course for an individual runner to show where they went
+    // based on drawCourse in courses.js
+    // could refactor in future...
+    // &gt; 1 since we need at least a start and finish to draw something
+    if ((this.displayScoreCourse) &amp;&amp; (this.scorex.length &gt; 1)) {
+      var angle;
+      var c1x;
+      var c1y;
+      var c2x;
+      var c2y;
+      var i;
+      var opt = rg2.getOverprintDetails();
+      rg2.ctx.globalAlpha = rg2.config.FULL_INTENSITY;
+      angle = rg2.getAngle(this.scorex[0], this.scorey[0], this.scorex[1], this.scorey[1]);
+      rg2.drawStart(this.scorex[0], this.scorey[0], "", angle, opt);
+      for ( i = 0; i &lt; (this.scorex.length - 1); i += 1) {
+        angle = rg2.getAngle(this.scorex[i], this.scorey[i], this.scorex[i + 1], this.scorey[i + 1]);
+        if (i === 0) {
+          c1x = this.scorex[i] + (opt.startTriangleLength * Math.cos(angle));
+          c1y = this.scorey[i] + (opt.startTriangleLength * Math.sin(angle));
+        } else {
+          c1x = this.scorex[i] + (opt.controlRadius * Math.cos(angle));
+          c1y = this.scorey[i] + (opt.controlRadius * Math.sin(angle));
+        }
+        //Assume the last control in the array is a finish
+        if (i === this.scorex.length - 2) {
+          c2x = this.scorex[i + 1] - (opt.finishOuterRadius * Math.cos(angle));
+          c2y = this.scorey[i + 1] - (opt.finishOuterRadius * Math.sin(angle));
+        } else {
+          c2x = this.scorex[i + 1] - (opt.controlRadius * Math.cos(angle));
+          c2y = this.scorey[i + 1] - (opt.controlRadius * Math.sin(angle));
+        }
+        rg2.ctx.beginPath();
+        rg2.ctx.moveTo(c1x, c1y);
+        rg2.ctx.lineTo(c2x, c2y);
+        rg2.ctx.stroke();
+      }
+      for (i = 1; i &lt; (this.scorex.length - 1); i += 1) {
+        rg2.drawSingleControl(this.scorex[i], this.scorey[i], i, Math.PI * 0.25, opt);
+      }
+      rg2.drawFinish(this.scorex[this.scorex.length - 1], this.scorey[this.scorey.length - 1], "", opt);
+    }
+  },
+&nbsp;
+	expandNormalTrack : function() {
+    // allow for getting two tracks for same result: should have been filtered in API...
+    this.xysecs.length = 0;
+    this.cumulativeDistance.length = 0;
+    
+    // add times and distances at each position	
+		this.xysecs[0] = 0;
+		this.cumulativeDistance[0] = 0;
+		
+		// get course details
+		var course = {};
+		// each person has their own defined score course
+		if (this.isScoreEvent) {
+			course.x = this.scorex;
+			course.y = this.scorey;
+		} else {
+			course.x = rg2.getCourseDetails(this.courseid).x;
+			course.y = rg2.getCourseDetails(this.courseid).y;
+		}
+		// read through list of controls and copy in split times
+		var nextcontrol = 1;
+		var nextx = course.x[nextcontrol];
+		var nexty = course.y[nextcontrol];
+		var dist = 0;
+		var oldx = this.trackx[0];
+		var oldy = this.tracky[0];
+		var i;
+		var j;
+		var l;
+		var x = 0;
+		var y = 0;
+		var deltat = 0;
+		var deltadist = 0;
+		var olddist = 0;
+		var oldt = 0;
+		var previouscontrolindex = 0;
+		// we are assuming the track starts at the start which is index 0...
+		// look at each track point and see if it matches the next control location
+		l = this.trackx.length;
+		for ( i = 1; i &lt; l; i += 1) {
+			// calculate distance while we are looping through
+			x = this.trackx[i];
+			y = this.tracky[i];
+			dist += rg2.getDistanceBetweenPoints(x, y, oldx, oldy);
+			this.cumulativeDistance[i] = Math.round(dist);
+			oldx = x;
+			oldy = y;
+			// track ends at control
+			if ((nextx == x) &amp;&amp; (nexty == y)) {
+				this.xysecs[i] = parseInt(this.splits[nextcontrol], 10);
+				// go back and add interpolated time at each point based on cumulative distance
+				// this assumes uniform speed...
+				oldt = this.xysecs[previouscontrolindex];
+				deltat = this.xysecs[i] - oldt;
+				olddist = this.cumulativeDistance[previouscontrolindex];
+				deltadist = this.cumulativeDistance[i] - olddist;
+				for (j = previouscontrolindex; j &lt;= i; j += 1) {
+					this.xysecs[j] = oldt + Math.round(((this.cumulativeDistance[j] - olddist) * deltat / deltadist));
+				}
+				previouscontrolindex = i;
+				nextcontrol += 1;
+				if (nextcontrol === course.x.length) {
+					// we have found all the controls
+					this.hasValidTrack = true;
+					break;
+				} else {
+					nextx = course.x[nextcontrol];
+					nexty = course.y[nextcontrol];
+				}
+			}
+		}
+		// treat all score tracks as valid for now
+		// may need a complete rethink on score course handling later
+		if (this.isScoreEvent) {
+			this.hasValidTrack = true;
+		}
+		return this.hasValidTrack;
+	},
+&nbsp;
+	expandGPSTrack : function() {
+		var t;
+		var dist = 0;
+		var oldx = this.trackx[0];
+		var oldy = this.tracky[0];
+		var x = 0;
+		var y = 0;
+		var delta;
+		var maxSpeed = 0;
+		var oldDelta = 0;
+		var sum;
+		var POWER_FACTOR = 1;
+		// in theory we get one point every three seconds
+		var l = this.trackx.length;
+		for ( t = 0; t &lt; l; t += 1) {
+			this.xysecs[t] = 3 * t;
+			x = this.trackx[t];
+			y = this.tracky[t];
+			delta = rg2.getDistanceBetweenPoints(x, y, oldx, oldy);
+			dist += delta;
+			sum = delta + oldDelta;
+			if (maxSpeed &lt; sum) {
+        maxSpeed = sum;
+			}
+      this.speedColour[t] = Math.pow(sum, POWER_FACTOR);
+			this.cumulativeDistance[t] = Math.round(dist);
+			oldx = x;
+			oldy = y;
+			oldDelta = delta;
+		}
+&nbsp;
+		this.setSpeedColours(Math.pow(maxSpeed, POWER_FACTOR));
+		this.hasValidTrack = true;
+		return this.hasValidTrack;
+&nbsp;
+	},
+&nbsp;
+  setSpeedColours: function(maxspeed) {
+    var i;
+    var red;
+    var green;
+    var halfmax;
+    //console.log("'Max speed = " + maxspeed);
+    halfmax = maxspeed / 2;
+    // speedColour comes in with speeds at each point and gets updated to the associated colour
+    for ( i = 1; i &lt; this.speedColour.length; i += 1) {
+      if (this.speedColour[i] &gt; halfmax) {
+        // fade green to orange
+        red = Math.round(255 * (this.speedColour[i] - halfmax) / halfmax);
+        green = 255;
+      } else {
+        // fade orange to red
+        green = Math.round(255 * this.speedColour[i] /halfmax);
+        red = 255;
+      }
+      this.speedColour[i] = '#';
+      if (red &lt; 16) {
+        this.speedColour[i] += '0';
+      }
+      this.speedColour[i] += red.toString(16);
+      if (green &lt; 16) {
+        this.speedColour[i] += '0';
+      }
+      this.speedColour[i] += green.toString(16) + '00';
+    }
+  },
+&nbsp;
+  getInitials : function (name) {
+    // converts name to initials
+    // remove white space at each end
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (name === null) {
+<span class="cstat-no" title="statement not covered" >      return "";</span>
+    }
+    name.trim();
+    var i;
+    var addNext;
+    var len = name.length;
+    var initials = "";
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (len === 0) {
+<span class="cstat-no" title="statement not covered" >      return "";</span>
+    }
+    addNext = true;
+    for (i = 0; i &lt; len; i += 1) {
+      if (addNext) {
+        initials += name.substr(i, 1);
+        addNext = false;
+      }
+      if (name.charAt(i) === " ") {
+        addNext = true;
+      }
+    }
+    
+    return initials;
+  }
+};</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Dec 07 2014 17:49:16 GMT+0000 (GMT Standard Time)</div>
+</div>
+
+<script src="../prettify.js"></script>
+
+<script src="https://yui-s.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>
