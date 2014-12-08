@@ -142,3 +142,21 @@
 155|163|2|Herts Winter ARC: Hertford|2014-04-15|HH|L|
 156|164|1|SEOA Sprint Champs: Oaklands College|2014-04-26|HH|R|
 157|165|1|SEOA Middle Champs: Mardley Heath|2014-04-27|HH|R|
+158|166|1|Cassiobury Saturday Series|2014-05-10|HH|L|
+159|167|2|Herts ARC 2014: How Wood|2014-05-13|HH|L|
+160|168|2|Herts ARC 2014: Highfield Park and The Camp|2014-05-20|HH|L|
+161|170|2|Herts ARC 2014: Highfield Park|2014-05-27|HH|L|
+162|171|2|Herts ARC 2014: Hemel Hempstead|2014-06-03|HH|L|
+163|172|1|Habs Saturday Series|2014-06-07|HH|L|
+164|173|2|Herts ARC 2014: Welham Green|2014-06-17|HH|L|
+165|174|1|Whippendell GLOSS|2014-07-05|HH|L|
+166|175|2|Herts ARC 2014: Marshalswick|2014-07-15|HH|L|
+167|176|2|Herts ARC 2014: Jersey Farm|2014-07-22|HH|L|
+168|177|2|Herts ARC 2014: Welwyn Garden City|2014-08-05|HH|L|
+169|178|2|Herts ARC 2014: St Albans South|2014-08-19|HH|L|
+170|179|2|Herts ARC 2014: Verulamium|2014-08-26|HH|L|
+171|180|2|Oaklands College AGM Sprint|2014-09-02|HH|L|
+172|181|1|Ellenbrook Saturday League|2014-09-06|HH|L|
+173|183|1|Verulamium Saturday League|2014-10-04|HH|L|
+174|185|1|Stanborough Saturday League|2014-11-01|HH|L|
+175|186|1|Heartwood Saturday League|2014-12-06|HH|L|

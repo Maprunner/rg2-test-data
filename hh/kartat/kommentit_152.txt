@@ -1,0 +1,7 @@
+1|7|Helen Errington||Type your comment
+4|50105| GPS Simon Errington||Raw GPS file with no adjustment. The infamous control 9 is probably a bit further west than mapped, and the green has moved further east.
+4|108|Ian Byford||Type your comment
+4|50117| GPS Sue Carter||Type your comment
+4|107|Kevin Cordina||Type your comment
+3|60|Lucy Edmond||Type your comment
+4|100105| GPS Simon Errington*||Type your comment

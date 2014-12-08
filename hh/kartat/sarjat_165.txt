@@ -1,0 +1,4 @@
+1|GLOSS
+2|GLOSS+
+3|Orange
+4|Yellow

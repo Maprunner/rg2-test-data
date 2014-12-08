@@ -32,3 +32,7 @@
 7|186|Jane Archer||Type your comment
 4|157|Mick Smith||Type your comment
 6|50226| GPS Aimee Darley||GPS is a little bit off .
+4|50180| GPS John Harris||Type your comment
+4|50179| GPS John Chappell||Type your comment
+8|241|Peter Errington||Demonstration video for RG2
+4|100179| GPS  GPS John Chappell||Type your comment
