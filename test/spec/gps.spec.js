@@ -12,21 +12,21 @@ describe('RG2 GPS', function() {
     draw.courses.get(1).click();
     draw.names.get(2).click();
     draw.addComment('Protractor test comment');
-	  draw.loadGPSFile('c:/xampp/htdocs/rg2/test/data/verulamium.abc');
+	  draw.loadGPSFile('c:/xampp/htdocs/rg2-test-data/test/data/verulamium.abc');
 	  draw.saveGPSRoute();
 	  // file not found error message
 		rg2.acknowledgeWarning();
   });
 
   it('should warn about an invalid file', function() {
-	  draw.loadGPSFile('c:/xampp/htdocs/rg2/test/data/invalid.gpx');
+	  draw.loadGPSFile('c:/xampp/htdocs/rg2-test-data/test/data/invalid.gpx');
 	  draw.saveGPSRoute();
 	  // invalid file format error message
 		rg2.acknowledgeWarning();
   });
 
   it('should allow you to upload a GPX file to a non-georeferenced Verulamium map', function() {	  
-	  draw.loadGPSFile('c:/xampp/htdocs/rg2/test/data/verulamium.gpx');
+	  draw.loadGPSFile('c:/xampp/htdocs/rg2-test-data/test/data/verulamium.gpx');
   });
   
   it('should allow you to adjust the GPX route', function() {
@@ -46,7 +46,7 @@ describe('RG2 GPS', function() {
     draw.courses.get(1).click();
     draw.names.get(1).click();
     draw.addComment('Protractor test comment');
-	  draw.loadGPSFile('c:/xampp/htdocs/rg2/test/data/ellenbrook.tcx');
+	  draw.loadGPSFile('c:/xampp/htdocs/rg2-test-data/test/data/ellenbrook.tcx');
 	  draw.saveGPSRoute();
 		browser.sleep(1000);
 		rg2.acknowledgeWarning();
@@ -56,7 +56,7 @@ describe('RG2 GPS', function() {
     draw.courses.get(2).click();
     draw.names.get(2).click();
     draw.addComment('Protractor test comment');
-	  draw.loadGPSFile('c:/xampp/htdocs/rg2/test/data/verulamium.gpx');
+	  draw.loadGPSFile('c:/xampp/htdocs/rg2-test-data/test/data/verulamium.gpx');
 		rg2.acknowledgeWarning();
   });
   
