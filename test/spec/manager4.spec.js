@@ -18,7 +18,7 @@ describe('RG2 Manager 4', function() {
     element(by.id('rg2-event-comments')).sendKeys('IOF V3 course file, IOF V2 results, not georeferenced');
 	  element(by.id('rg2-load-course-file')).sendKeys('c:/xampp/htdocs/rg2-test-data/test/data/miltonriggIOFV3courses.xml');
 	  element(by.id('rg2-load-results-file')).sendKeys('c:/xampp/htdocs/rg2-test-data/test/data/miltonriggIOFV1results.xml');
-		rg2.acknowledgeWarning('Invalid IOF file format');
+		rg2.acknowledgeWarning('File is not a valid XML event file');
 	  element(by.id('rg2-load-results-file')).sendKeys('c:/xampp/htdocs/rg2-test-data/test/data/miltonriggIOFV2results.xml');
 		manager.createEvent();
 		rg2.acknowledgeWarning('has been added');
