@@ -46,8 +46,8 @@ describe('RG2 Manager Edit', function() {
 	it('should delete a route', function() {
 	  element(by.id('rg2-event-selected')).all(by.css('option')).last().click();
 	  element(by.id('rg2-route-selected')).all(by.css('option')).first().click();
-	  btnDeleteRoute.click();
-  	dlgConfirmDeleteRoute.element(by.buttonText('Cancel')).click();
+	  //btnDeleteRoute.click();
+  	//dlgConfirmDeleteRoute.element(by.buttonText('Cancel')).click();
 	  //btnDeleteRoute.click();
   	//dlgConfirmDeleteRoute.element(by.buttonText('Delete route')).click();
 	  //browser.sleep(1000);
