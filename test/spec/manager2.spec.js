@@ -4,14 +4,14 @@ describe('RG2 Manager 2', function() {
 
   var btnCreateEvent = element(by.id('btn-create-event'));
   
-  it('should allow you to log on as manager', function() {
+  it('should reject an invalid password', function() {
  		manager.startManager();
-
 	  // wrong password: error reported
  		manager.login('hhhhh', '12345');
-		rg2.acknowledgeWarning();
+		rg2.acknowledgeWarning("Login failed");
 	 	});
-	 	
+
+  it('should allow you to log on as manager', function() {
  		manager.login();
   });
 
@@ -21,7 +21,7 @@ describe('RG2 Manager 2', function() {
 	  element(by.id('rg2-load-map-file')).sendKeys('c:/xampp/htdocs/rg2-test-data/test/data/ellenbrook.jpg');
 	  element(by.id('rg2-load-georef-file')).sendKeys('c:/xampp/htdocs/rg2-test-data/test/data/ellenbrook.jgw');
 	  manager.addMap();
-		rg2.acknowledgeWarning();
+		rg2.acknowledgeWarning("has been added");
 	});
 
 	it('should create Event 2: CSV results: IOF V3 courses: georef', function() {
