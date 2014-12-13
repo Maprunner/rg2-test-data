@@ -34,7 +34,7 @@ describe('RG2 Manager Edit', function() {
 	});
 
 	it('should delete an event', function() {
-	  element(by.id('rg2-event-selected')).all(by.css('option')).get(2).click();
+	  element(by.id('rg2-event-selected')).all(by.css('option')).get(1).click();
 	  btnDeleteEvent.click();
   	dlgConfirmDeleteEvent.element(by.buttonText('Cancel')).click();
 	  btnDeleteEvent.click();

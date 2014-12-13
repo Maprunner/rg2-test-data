@@ -17,11 +17,8 @@ describe('RG2 draw', function() {
     draw.addComment('Protractor draw test');
     // add first point
     browser.actions().mouseMove(rg2.map, {x:0, y:0}).mouseDown().mouseUp().perform();
-    browser.sleep(5000);
     browser.actions().mouseMove(rg2.map, {x:100, y:100}).mouseDown().mouseUp().perform();
-    browser.sleep(5000);
     browser.actions().mouseMove(rg2.map, {x:200, y:200}).mouseDown().mouseUp().perform();
-    browser.sleep(5000);
     draw.waitThreeSeconds();
     browser.actions().mouseMove(rg2.map, {x:300, y:300}).mouseDown().mouseUp().perform();
 		draw.undo();
@@ -39,15 +36,15 @@ describe('RG2 draw', function() {
 		draw.doCourseChange();
   });
 
-	it('should allow you to load a Trent Park score course', function() {
- 		rg2.getEvent('135');
+	it('should allow you to load a Verulamium score course', function() {
+ 		rg2.getEvent('102');
     draw.showDrawTab();
   });
   
    it('should allow you to start drawing a score course route', function() {
     draw.courses.get(1).click();
     draw.names.get(1).click();
-    draw.addComment('Trent Park score draw test');
+    draw.addComment('Verulamium score draw test');
     // add first point
     browser.actions().click(rg2.map).perform();
   });

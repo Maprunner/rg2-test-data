@@ -6,6 +6,12 @@ describe('RG2 Manager 2', function() {
   
   it('should allow you to log on as manager', function() {
  		manager.startManager();
+
+	  // wrong password: error reported
+ 		manager.login('hhhhh', '12345');
+		rg2.acknowledgeWarning();
+	 	});
+	 	
  		manager.login();
   });
 

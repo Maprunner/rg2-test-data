@@ -21,11 +21,6 @@ describe('RG2 Manager 1', function() {
 	  // password too short: error reported
  		manager.login('hhhhh', 'xyz');
 		rg2.acknowledgeWarning();
-
-	  // wrong password: error reported
- 		manager.login('hhhhh', '12345');
-		rg2.acknowledgeWarning();
-	 	});
  		
  	it('should allow a valid login', function() {
 		manager.login();
