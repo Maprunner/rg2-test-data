@@ -27,6 +27,53 @@ describe('RG2 replay', function() {
   var cbxAllCourseReplay = element.all(by.css('.allcoursereplay'));
   var cbxShowScoreCourse = element.all(by.css('.showscorecourse'));
   
+  it('should select a Trent Park score event with a georeferenced map', function() {
+    rg2.loadRG2();
+    rg2.getEvent('135');
+  });
+
+  it('should show the course for a score event', function() {
+    cbxCourseList.first().click();
+    element.all(by.css('.allcourses')).first().click();
+    element.all(by.css('.allcourses')).first().click();
+  });
+
+  it('should show an individual course for a score event', function() {
+  	result.showResultsTab();
+    cbxShowScoreCourse.first().click();
+  });
+
+  it('should allow replay for a score event', function() {
+    cbxShowReplay.first().click();
+    expect(animationControls.isDisplayed()).toBe(true);
+		// start
+    btnStartStop.click();
+    browser.sleep(1000);
+  });
+  
+  it('should show the splits table for a georeferenced map', function() {
+  	rg2.showSplits();
+		rg2.hideSplits();
+  });
+
+  it('should show a Welwyn event with no splits', function() {
+    rg2.getEvent('154');
+  	result.showResultsTab();
+  });
+
+  it('should allow replay for an event with no splits', function() {
+    cbxShowReplay.first().click();
+    expect(animationControls.isDisplayed()).toBe(true);
+		// start
+    btnStartStop.click();
+    rg2.showOptionsDialog();
+    rg2.showGPSSpeed();
+    browser.sleep(2000);
+    rg2.showGPSSpeed();
+    rg2.hideOptionsDialog();
+
+  });
+  
   it('should select a Mardley Heath event and show the results tab', function() {
   	rg2.loadRG2('#157&course=1&route=2');
     // got a route in the URL
@@ -164,51 +211,8 @@ describe('RG2 replay', function() {
 		rg2.hideSplits();
 
   });
-  
-  it('should select a Trent Park score event with a georeferenced map', function() {
-    rg2.getEvent('135');
-  });
-
-  it('should show the course for a score event', function() {
-    cbxCourseList.first().click();
-    element.all(by.css('.allcourses')).first().click();
-    element.all(by.css('.allcourses')).first().click();
-  });
-
-  it('should show an individual course for a score event', function() {
-  	result.showResultsTab();
-    cbxShowScoreCourse.first().click();
-  });
-
-  it('should allow replay for a score event', function() {
-    cbxShowReplay.first().click();
-    expect(animationControls.isDisplayed()).toBe(true);
-		// start
-    btnStartStop.click();
-    browser.sleep(1000);
-  });
-  
-  it('should show the splits table for a georeferenced map', function() {
-  	rg2.showSplits();
-		rg2.hideSplits();
-  });
-
-  it('should show a Welwyn event with no splits', function() {
-    rg2.getEvent('154');
-  	result.showResultsTab();
-  });
-
-  it('should allow replay for an event with no splits', function() {
-    cbxShowReplay.first().click();
-    expect(animationControls.isDisplayed()).toBe(true);
-		// start
-    btnStartStop.click();
-    rg2.showOptionsDialog();
-    rg2.showGPSSpeed();
-    browser.sleep(2000);
-    rg2.showGPSSpeed();
-    rg2.hideOptionsDialog();
-
-  });
-  
+    
+  it('should load Splitsbrowser', function() {
+    rg2.loadSplitsbrowser();
+  });	  
 });

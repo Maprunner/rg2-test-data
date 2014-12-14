@@ -59,6 +59,7 @@ var RG2Page = function() {
 	
 	this.loadSplitsbrowser = function() {
 		this.splitsbrowser.click();
+    browser.sleep(2000);
 	};
 	
 	this.getEvent = function(id) {

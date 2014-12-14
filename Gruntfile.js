@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 
    clean: {
 			tests: [
-			'test/coverage/', 
+			'test/coverage', 
 			'test/report'],
 		},
 
@@ -54,14 +54,14 @@ module.exports = function(grunt) {
       },
       rg2: {
         options: {
-       		coverageDir: 'test/coverage/rg2',
+       		coverageDir: 'test/coverage',
        		configFile: 'test/config/rg2-conf.js'
         }
       }
   },
   
     makeReport: {
-        src: 'test/coverage/**/*.json',
+        src: 'test/coverage/*.json',
         options: {
             type: 'html',
             dir: 'test/report',
@@ -75,6 +75,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['test']);
 
-  grunt.registerTask('test', ['clean', 'instrument', 'sync:protractor', 'connect', 'protractor_coverage:rg2', 'makeReport']);
+  grunt.registerTask('test', ['clean:tests', 'instrument', 'sync:protractor', 'connect', 'protractor_coverage:rg2', 'makeReport']);
 
 };

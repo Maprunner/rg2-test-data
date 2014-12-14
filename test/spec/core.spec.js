@@ -164,9 +164,6 @@ describe('RG2', function() {
   it('should hide the configuration dialog', function() {
 		rg2.hideOptionsDialog();
   });
-  
-  it('should load Splitsbrowser', function() {
-    rg2.loadSplitsbrowser();
-  });	
+
   
 });
