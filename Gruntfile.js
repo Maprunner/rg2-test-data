@@ -18,7 +18,7 @@ module.exports = function(grunt) {
    clean: {
 			tests: [
 			'test/coverage/', 
-			'test/reports'],
+			'test/report'],
 		},
 
     connect: {

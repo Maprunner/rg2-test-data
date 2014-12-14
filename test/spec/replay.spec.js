@@ -34,17 +34,28 @@ describe('RG2 replay', function() {
   });
 
   it('should display and hide courses', function() {
+    browser.sleep(1000);
+
     result.showCourse.first().click();
+    browser.sleep(1000);
+
     result.showCourse.first().click();
   });
 
   it('should display and hide tracks', function() {
     result.list.first().click();
+    browser.sleep(1000);
     result.showTrack.get(3).click();
+    browser.sleep(1000);
+
     expect(trackNames.isDisplayed()).toBe(true);
     result.showTrack.first().click();
+    browser.sleep(1000);
+
     expect(trackNames.isDisplayed()).toBe(true);
     result.showTrack.get(3).click();  
+    browser.sleep(1000);
+
     expect(trackNames.isDisplayed()).toBe(false);
   });
 
