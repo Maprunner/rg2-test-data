@@ -127,7 +127,7 @@
 139|136|2|Herts ARC 2013 Race 16: Greenwood Park|2013-08-27|Happy Herts|L|
 140|137|2|HH Sprint Champs - Highfield Park|2013-09-03|Happy Herts|L|
 141|138|1|Sherrardspark Wood Saturday League|2013-09-07|Happy Herts|L|
-142|139|2|Herts Winter ARC - Welwyn Village|2013-09-17|Happy Herts|L|
+142|139|2|Herts Winter ARC - Welwyn Village|2013-09-17|Happy Herts|T|
 143|140|1|Verulamium Saturday League|2013-10-05|Happy Herts|L|
 144|141|1|Jack of Herts: Northaw|2013-10-20|Happy Herts|L|
 145|142|1|Stanborough Saturday League|2013-11-09|Happy Herts|L|
@@ -155,7 +155,7 @@
 168|177|2|Herts ARC 2014: Welwyn Garden City|2014-08-05|HH|L|
 169|178|2|Herts ARC 2014: St Albans South|2014-08-19|HH|L|
 170|179|2|Herts ARC 2014: Verulamium|2014-08-26|HH|L|
-171|180|2|Oaklands College AGM Sprint|2014-09-02|HH|L|
+171|180|2|Oaklands College AGM Sprint|2014-09-02|HH|S|
 172|181|1|Ellenbrook Saturday League|2014-09-06|HH|L|
 173|183|1|Verulamium Saturday League|2014-10-04|HH|L|
 174|185|1|Stanborough Saturday League|2014-11-01|HH|L|
