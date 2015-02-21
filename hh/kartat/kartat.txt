@@ -137,7 +137,7 @@
 137|Highfield Park
 138|Sherrardspark Wood
 139|Welwyn Village
-140|Map copyright text|1286.55|-0.33981|355.034|51.750889|394.11|-0.356|775.23|51.745794|455.06|-0.355217|110.68|51.753321
+140|Verulamium
 141|Northaw
 142|Stanborough
 143|Stanborough
